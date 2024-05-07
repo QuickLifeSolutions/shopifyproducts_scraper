@@ -32,6 +32,8 @@ Configure the scraper by setting the URLs of the Shopify stores you want to moni
 - **AI Newsletter**: [Subscribe to our newsletter](https://sendfox.com/quicklifesolutions)
 - **Free Consultation**: [Book a free consultation call](https://tidycal.com/quicklifesolutions/free-consultation)
 - **More Tools**: [Explore our Apify actors](https://apify.com/dainty_screw)
+
+## Support: 
 - **Discord**: [Raise a Support ticket here](https://discord.gg/2WGj2PDmHb)
 - **Contact Email**: [codemasterdevops@gmail.com](mailto:codemasterdevops@gmail.com)
 ```
