@@ -1,57 +1,37 @@
-## What does Shopify Scraper do?
 
-Using this tool, you can automate monitoring prices on the most popular solution for building online stores and selling products online. Crawl arbitrary Shopify-powered online stores and extract a list of all products in a structured form, including product title, price, description, etc.
 
-## Need to find product pairs between Shopify and another online shop?
+```markdown
+# Shopify Scraper
 
-Use the [AI Product Matcher](https://apify.com/equidem/ai-product-matcher). This AI model allows you to compare items from different web stores, identifying exact matches and comparing real-time data obtained via web scraping. With the AI Product Matcher, you can use scraped product data to monitor product matches across the industry, implement dynamic pricing for your website, replace or complement manual mapping, and obtain realistic estimates against your competition for upcoming promo campaigns. 
+## Overview
 
-Most importantly, it is relatively easy to get started with (just follow [this guide](https://blog.apify.com/product-matching-ai-pricing-intelligence-web-scraping/)) and it can match thousands of product pairs.
+Our Shopify Scraper is tailored for automating the extraction of detailed product data from Shopify-powered online stores. With this tool, you can monitor prices, descriptions, and other essential product details across various Shopify sites.
 
-## Extend Scraper and Output Function
+## Features
 
-Extend output function allows to filter the items that are output:
+- **Comprehensive Data Extraction**: Automatically gather information like product titles, prices, and descriptions.
+- **Proxy Support**: Utilize proxy settings to ensure privacy and bypass site restrictions during scraping sessions.
+- **Dynamic Content Handling**: The scraper waits for specific elements to load on the page, ensuring that all relevant data is captured, even from dynamically generated content.
 
-```js
-async ({ item, customData }) => {
-    if (!item.title.includes('cuisine')) {
-        return null; // omit the output
-    }
+## Getting Started
 
-    delete item.additional; // remove data from output
+Configure the scraper by setting the URLs of the Shopify stores you want to monitor. Here's a basic example of how to set up your input configuration:
 
-    item.requestId = customData.requestId; // add data from the outside
-
-    return item;
+```json
+{
+    "urls": ["https://example-shopify.com"],
+    "waitForSelector": ".product-grid-item",
+    "useProxy": true
 }
 ```
 
-Extend scraper function allows you to interact with scraper phases:
+## Connect With Us:
 
-```js
-async ({ label, url, filter, fns, filteredSitemapUrls, customData }) => {
-    switch (label) {
-        case 'FILTER_SITEMAP_URL': {
-            // product url, like .../products/cooking-for-dummies-2002-289854
-            filter(
-                url.includes('cooking') || url.includes(customData.filter)
-            );
-            break;
-        }
-        case 'SETUP': {
-            // filteredSitemapUrls is a `Set` instance and can be edited in-place
-            filteredSitemapUrls.add('https://example.com/secret-unlisted-sitemap.xml');
-            filteredSitemapUrls.forEach((sitemapURL) => {
-                if (!sitemapURL.includes('en-us')) {
-                    filteredSitemapUrls.delete(sitemapURL);
-                }
-            });
-            break;
-        }
-    }
-}
+- **YouTube**: [Visit our channel](https://www.youtube.com/@CodeMaster-421)
+- **Instagram**: [Follow us on Instagram](https://www.instagram.com/quicklifesolutionsofficial/)
+- **AI Newsletter**: [Subscribe to our newsletter](https://sendfox.com/quicklifesolutions)
+- **Free Consultation**: [Book a free consultation call](https://tidycal.com/quicklifesolutions/free-consultation)
+- **More Tools**: [Explore our Apify actors](https://apify.com/dainty_screw)
+- **Discord**: [Raise a Support ticket here](https://discord.gg/2WGj2PDmHb)
+- **Contact Email**: [codemasterdevops@gmail.com](mailto:codemasterdevops@gmail.com)
 ```
-
-## License
-
-Apache 2.0
