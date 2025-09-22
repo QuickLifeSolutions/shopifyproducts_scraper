@@ -1,11 +1,210 @@
 import Apify from 'apify';
 import { gotScraping } from 'got-scraping';
 import { load } from 'cheerio';
+import { readFile } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import * as vm from 'vm';
 
 export { stripHtml } from 'string-strip-html';
 
 const { log } = Apify.utils;
+const execFileAsync = promisify(execFile);
+const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
+const COLLECTION_PAGE_SIZE = 250;
+
+const readJsonIfExists = async (relativePath) => {
+    try {
+        const absolute = path.join(projectRoot, relativePath);
+        const contents = await readFile(absolute, 'utf8');
+        return JSON.parse(contents);
+    } catch (error) {
+        if (error && error.code !== 'ENOENT') {
+            log.debug('Unable to read metadata file', { relativePath, error: error.message });
+        }
+        return undefined;
+    }
+};
+
+const gitCommand = async (args) => {
+    try {
+        const { stdout } = await execFileAsync('git', args, { cwd: projectRoot });
+        return stdout.trim() || undefined;
+    } catch (error) {
+        log.debug('Git metadata unavailable', { args: args.join(' '), error: error.message });
+        return undefined;
+    }
+};
+
+export const enqueueProductRequest = async ({ url, requestQueue, fetchHtml }) => {
+    if (!url) {
+        return 0;
+    }
+
+    const trimmed = `${url}`.trim();
+
+    if (!trimmed) {
+        return 0;
+    }
+
+    const baseUrl = trimmed.replace(/\.json(\?.*)?$/i, '');
+    const targetUrl = fetchHtml ? baseUrl : `${baseUrl}.json`;
+    const userData = {
+        url: baseUrl,
+        label: fetchHtml ? 'HTML' : 'JSON',
+    };
+
+    const result = await requestQueue.addRequest({
+        url: targetUrl,
+        userData,
+    });
+
+    return result.wasAlreadyPresent ? 0 : 1;
+};
+
+export const enqueueCollectionProducts = async ({ collectionUrl, proxyConfiguration, requestQueue, fetchHtml }) => {
+    if (!collectionUrl) {
+        return 0;
+    }
+
+    const normalized = `${collectionUrl}`.trim();
+
+    if (!normalized) {
+        return 0;
+    }
+
+    const url = new URL(normalized);
+    const basePath = url.pathname.replace(/\/$/, '');
+    let enqueued = 0;
+    const handles = new Set();
+
+    for (let page = 1; ; page += 1) {
+        const jsonUrl = new URL(normalized);
+        jsonUrl.pathname = `${basePath}/products.json`;
+        jsonUrl.search = '';
+        jsonUrl.searchParams.set('limit', `${COLLECTION_PAGE_SIZE}`);
+        jsonUrl.searchParams.set('page', `${page}`);
+
+        let response;
+
+        try {
+            response = await gotScraping({
+                url: jsonUrl.toString(),
+                proxyUrl: proxyConfiguration?.newUrl(`${url.origin}-${page}-${Date.now()}`),
+                timeout: {
+                    response: 20000,
+                    request: 15000,
+                },
+                retry: { limit: 0 },
+            });
+        } catch (error) {
+            log.info('Failed to load collection page', { collectionUrl: normalized, page, error: error.message });
+            break;
+        }
+
+        if (![200, 301, 302].includes(response.statusCode)) {
+            log.info('Collection request returned unexpected status', { collectionUrl: normalized, statusCode: response.statusCode });
+            break;
+        }
+
+        let payload;
+
+        try {
+            payload = JSON.parse(response.body || '{}');
+        } catch (error) {
+            log.info('Unable to parse collection response', { collectionUrl: normalized, page, error: error.message });
+            break;
+        }
+
+        const products = Array.isArray(payload?.products) ? payload.products : [];
+
+        if (!products.length) {
+            break;
+        }
+
+        for (const product of products) {
+            const handle = product?.handle;
+
+            if (!handle || handles.has(handle)) {
+                continue;
+            }
+
+            handles.add(handle);
+            const productUrl = `${url.origin}/products/${handle}`;
+            enqueued += await enqueueProductRequest({
+                url: productUrl,
+                requestQueue,
+                fetchHtml,
+            });
+        }
+        if (products.length < COLLECTION_PAGE_SIZE) {
+            break;
+        }
+    }
+
+    log.info('Enqueued collection products', { collectionUrl: normalized, enqueued });
+
+    return enqueued;
+};
+
+/**
+ * Log useful metadata at startup so local CLI runs surface helpful context.
+ *
+ * @param {{ input: any }} params
+ */
+export const logRunMetadata = async ({ input }) => {
+    const env = Apify.getEnv() || {};
+    const pkg = await readJsonIfExists('package.json');
+    const {
+        startUrls = [],
+        maxConcurrency = 20,
+        maxRequestsPerCrawl,
+        fetchHtml = false,
+        limitToStartUrls,
+    } = input ?? {};
+
+    const [gitBranch, gitCommit] = await Promise.all([
+        gitCommand(['rev-parse', '--abbrev-ref', 'HEAD']),
+        gitCommand(['rev-parse', '--short', 'HEAD']),
+    ]);
+
+    let sampleStartUrl;
+
+    if (Array.isArray(startUrls) && startUrls.length) {
+        const firstStartUrl = startUrls[0];
+        sampleStartUrl = typeof firstStartUrl === 'string'
+            ? firstStartUrl
+            : firstStartUrl?.url;
+    }
+
+    const metadata = {
+        actorRunId: env.actorRunId,
+        actorId: env.actorId,
+        taskId: env.actorTaskId,
+        userId: env.userId,
+        gitBranch,
+        gitCommit,
+        nodeVersion: process.version,
+        apifySdkVersion: Apify.version || pkg?.dependencies?.apify,
+        packageName: pkg?.name,
+        packageVersion: pkg?.version,
+        startUrlsCount: Array.isArray(startUrls) ? startUrls.length : 0,
+        sampleStartUrl,
+        fetchHtml,
+        maxConcurrency,
+        maxRequestsPerCrawl: maxRequestsPerCrawl ?? null,
+        limitToStartUrls: typeof limitToStartUrls === 'boolean' ? limitToStartUrls : undefined,
+    };
+
+    const sanitized = Object.fromEntries(
+        Object.entries(metadata)
+            .filter(([, value]) => value !== null && value !== undefined && value !== ''),
+    );
+
+    log.info('Run metadata', sanitized);
+};
 
 /**
  * Remove the GUID from the string if present
@@ -60,6 +259,28 @@ export const categorizeUrl = (url) => {
     if (!url) {
         throw new Error('Found empty url');
     }
+
+    const cleaned = `${url}`.split('#', 1)[0]?.trim();
+
+    if (!cleaned) {
+        return 'other';
+    }
+
+    const lower = cleaned.toLowerCase();
+
+    if (/sitemap.*\.xml(\?.*)?$/.test(lower)) {
+        return 'sitemap';
+    }
+
+    if (/\/products\//.test(lower)) {
+        return 'product';
+    }
+
+    if (/\/collections\//.test(lower)) {
+        return 'collection';
+    }
+
+    return 'other';
 };
 
 /**
@@ -282,7 +503,7 @@ export const checkForRobots = async ({ checkForBanner = true, filteredSitemapUrl
                     response: 20000,
                     request: 17000,
                 },
-                proxyUrl: proxyConfiguration?.newUrl(`${Math.random()*10000}`.replace('.', '')),
+                proxyUrl: proxyConfiguration?.newUrl(`${Math.random() * 10000}`.replace('.', '')),
                 retry: { limit: 0 },
             });
 
@@ -352,7 +573,11 @@ export const proxyConfiguration = async ({
 
     // this works for custom proxyUrls
     if (Apify.isAtHome() && required) {
-        if (!configuration || (!configuration.usesApifyProxy && (!configuration.proxyUrls || !configuration.proxyUrls.length)) || !configuration.newUrl()) {
+        const usesApifyProxy = configuration?.usesApifyProxy;
+        const hasCustomProxyUrls = (configuration?.proxyUrls || []).length > 0;
+        const generatedProxyUrl = configuration?.newUrl?.();
+
+        if ((!usesApifyProxy && !hasCustomProxyUrls) || !generatedProxyUrl) {
             throw new Error('\n=======\nYou must use Apify proxy or custom proxy URLs\n\n=======');
         }
     }
@@ -362,12 +587,32 @@ export const proxyConfiguration = async ({
         // only when actually using Apify proxy it needs to be checked for the groups
         if (configuration && configuration.usesApifyProxy) {
             if (blacklist.some((blacklisted) => (configuration.groups || []).includes(blacklisted))) {
-                throw new Error(`\n=======\nThese proxy groups cannot be used in this actor. Choose other group or contact support@apify.com to give you proxy trial:\n\n*  ${blacklist.join('\n*  ')}\n\n=======`);
+                const message = [
+                    '',
+                    '=======',
+                    'These proxy groups cannot be used in this actor. Choose other group or contact support@apify.com to give you proxy trial:',
+                    '',
+                    `*  ${blacklist.join('\n*  ')}`,
+                    '',
+                    '=======',
+                ].join('\n');
+
+                throw new Error(message);
             }
 
             // specific non-automatic proxy groups like RESIDENTIAL, not an error, just a hint
             if (hint.length && !hint.some((group) => (configuration.groups || []).includes(group))) {
-                Apify.utils.log.info(`\n=======\nYou can pick specific proxy groups for better experience:\n\n*  ${hint.join('\n*  ')}\n\n=======`);
+                const hintMessage = [
+                    '',
+                    '=======',
+                    'You can pick specific proxy groups for better experience:',
+                    '',
+                    `*  ${hint.join('\n*  ')}`,
+                    '',
+                    '=======',
+                ].join('\n');
+
+                Apify.utils.log.info(hintMessage);
             }
         }
     }

@@ -13,11 +13,19 @@
             ],
             "editor": "requestListSources"
         },
+        "limitToStartUrls": {
+            "title": "Limit to provided pages",
+            "description": "Only crawl products reachable from the provided start URLs (collections or products). Disable to scan the entire shop via sitemap.",
+            "type": "boolean",
+            "default": true,
+            "prefill": true,
+            "editor": "checkbox"
+        },
         "maxRequestsPerCrawl": {
             "title": "Max items",
             "description": "Maximum number of items to scrape. Set it to 0 to scrape everything.",
-            "default": 10,
-            "prefill": 10,
+            "default": 0,
+            "prefill": 0,
             "type": "integer",
             "editor": "number"
         },

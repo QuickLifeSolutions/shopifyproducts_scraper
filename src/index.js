@@ -18,24 +18,70 @@ export const entry = async () => {
         debugLog = false,
         fetchHtml = false,
         checkForBanner = true,
+        limitToStartUrls = true,
     } = input;
 
     if (debugLog) {
         log.setLevel(log.LEVELS.DEBUG);
     }
 
+    await fns.logRunMetadata({ input });
+
+    if (!startUrls?.length) {
+        throw new Error('Missing "startUrls" input');
+    }
+
+    const normalizedStartUrls = [];
+
+    for await (const request of fns.fromStartUrls(startUrls, 'INPUTURLS_CLASSIFY')) {
+        if (request?.url) {
+            normalizedStartUrls.push(request.url);
+        }
+    }
+
     const proxyConfiguration = await fns.proxyConfiguration({
         proxyConfig,
     });
 
-    if (!startUrls?.length) {
-        throw new Error('Missing "startUrls" input');
+    const productStartUrls = new Set();
+    const collectionStartUrls = new Set();
+    const providedSitemapUrls = new Set();
+    let shouldUseSitemaps = !limitToStartUrls;
+
+    for (const url of normalizedStartUrls) {
+        const category = fns.categorizeUrl(url);
+
+        if (category === 'product') {
+            productStartUrls.add(url);
+        } else if (category === 'collection') {
+            collectionStartUrls.add(url);
+        } else if (category === 'sitemap') {
+            providedSitemapUrls.add(url);
+            shouldUseSitemaps = true;
+        } else if (limitToStartUrls) {
+            shouldUseSitemaps = true;
+        }
+    }
+
+    if (limitToStartUrls
+        && !shouldUseSitemaps
+        && productStartUrls.size === 0
+        && collectionStartUrls.size === 0) {
+        shouldUseSitemaps = true;
     }
 
     /**
      * @type {Set<string>}
      */
     const filteredSitemapUrls = new Set(await Apify.getValue('FILTERED') || []);
+
+    for (const sitemapUrl of providedSitemapUrls) {
+        filteredSitemapUrls.add(sitemapUrl);
+    }
+
+    if (!shouldUseSitemaps) {
+        filteredSitemapUrls.clear();
+    }
 
     const persistState = async () => {
         await Apify.setValue('FILTERED', [...filteredSitemapUrls.values()]);
@@ -44,12 +90,14 @@ export const entry = async () => {
     Apify.events.on('aborting', persistState);
     Apify.events.on('migrating', persistState);
 
-    await fns.checkForRobots({
-        startUrls,
-        proxyConfiguration,
-        filteredSitemapUrls,
-        checkForBanner,
-    });
+    if (shouldUseSitemaps) {
+        await fns.checkForRobots({
+            startUrls,
+            proxyConfiguration,
+            filteredSitemapUrls,
+            checkForBanner,
+        });
+    }
 
     const extendOutputFunction = await fns.extendFunction({
         key: 'extendOutputFunction',
@@ -149,6 +197,41 @@ export const entry = async () => {
         label: 'SETUP',
     });
 
+    let directRequestsCount = 0;
+
+    if (limitToStartUrls) {
+        for (const productUrl of productStartUrls) {
+            directRequestsCount += await fns.enqueueProductRequest({
+                url: productUrl,
+                requestQueue,
+                fetchHtml,
+            });
+        }
+
+        for (const collectionUrl of collectionStartUrls) {
+            directRequestsCount += await fns.enqueueCollectionProducts({
+                collectionUrl,
+                proxyConfiguration,
+                requestQueue,
+                fetchHtml,
+            });
+        }
+
+        if (!shouldUseSitemaps && !directRequestsCount) {
+            log.warning('No products found under provided start URLs; falling back to sitemap crawl');
+            shouldUseSitemaps = true;
+            for (const sitemapUrl of providedSitemapUrls) {
+                filteredSitemapUrls.add(sitemapUrl);
+            }
+            await fns.checkForRobots({
+                startUrls,
+                proxyConfiguration,
+                filteredSitemapUrls,
+                checkForBanner,
+            });
+        }
+    }
+
     const requestList = await fns.requestListFromSitemaps({
         proxyConfiguration,
         requestQueue,
@@ -195,10 +278,24 @@ export const entry = async () => {
                 },
             };
         },
-        sitemapUrls: [...filteredSitemapUrls.values()],
+        sitemapUrls: shouldUseSitemaps ? [...filteredSitemapUrls.values()] : [],
     });
 
-    await Apify.setValue('STATS', { count: requestList.length() });
+    const requestListCount = typeof requestList.length === 'function'
+        ? requestList.length()
+        : 0;
+
+    await Apify.setValue('STATS', {
+        count: requestListCount + directRequestsCount,
+        requestListCount,
+        directRequestsCount,
+    });
+
+    if (limitToStartUrls && directRequestsCount) {
+        log.info('Prepared product requests from start URLs', {
+            directRequestsCount,
+        });
+    }
 
     const crawler = new Apify.CheerioCrawler({
         requestList,

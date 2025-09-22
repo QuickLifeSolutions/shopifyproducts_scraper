@@ -24,6 +24,10 @@ To start using the Shopify Products Scraper, configure it with the URLs of the S
 }
 ```
 
+**Configuration tips**
+- Set `limitToStartUrls` to `true` (default) when you want to scrape only the products directly reachable from the provided collection or product pages. Switch it to `false` to crawl the entire store via sitemap discovery.
+- `maxRequestsPerCrawl` now defaults to `0`, so the actor retrieves every matching product unless you provide a specific cap.
+
 ## Why Choose Our Shopify Scraper?
 
 - **Boost Your E-commerce Strategy**: Stay ahead of your competitors by gathering up-to-date product data for market analysis and price comparisons.
@@ -45,4 +49,3 @@ An example Shopify store you can scrape using this tool is [The Outrage](https:/
 
 - **Discord**: [Raise a Support ticket here](https://discord.gg/2WGj2PDmHb)
 - **Contact Email**: [codemasterdevops@gmail.com](mailto:codemasterdevops@gmail.com)
-
