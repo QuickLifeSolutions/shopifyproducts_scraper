@@ -87,8 +87,8 @@ export const enqueueCollectionProducts = async ({ collectionUrl, proxyConfigurat
         jsonUrl.searchParams.set('limit', `${COLLECTION_PAGE_SIZE}`);
         jsonUrl.searchParams.set('page', `${page}`);
 
-        const sessionId = `${url.hostname}-${page}-${Date.now()}`
-            .replace(/[^a-z0-9._~]/gi, '-');
+        const sessionId = `${url.hostname}_${page}_${Date.now()}`
+            .replace(/[^a-z0-9._~]/gi, '_');
 
         let response;
 
