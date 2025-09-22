@@ -316,6 +316,7 @@ export const entry = async () => {
         useSessionPool: true,
         maxConcurrency,
         handlePageTimeoutSecs: 60,
+        requestTimeoutSecs: 30,
         ignoreSslErrors: true,
         sessionPoolOptions: {
             sessionOptions: {
