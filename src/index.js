@@ -28,6 +28,11 @@ export const entry = async () => {
         proxyConfig,
     });
 
+    const productsLimit = Number.isFinite(+maxRequestsPerCrawl) && +maxRequestsPerCrawl > 0
+        ? +maxRequestsPerCrawl
+        : null;
+    let processedProducts = 0;
+
     if (!startUrls?.length) {
         throw new Error('Missing "startUrls" input');
     }
@@ -57,6 +62,12 @@ export const entry = async () => {
             if (!product) {
                 return;
             }
+
+            if (productsLimit && processedProducts >= productsLimit) {
+                return [];
+            }
+
+            processedProducts += 1;
 
             const created_at = fns.coalesceProps([product], ['created_at', 'createdAt']);
             const updated_at = fns.coalesceProps([product], ['updated_at', 'updatedAt']);
@@ -198,7 +209,18 @@ export const entry = async () => {
         sitemapUrls: [...filteredSitemapUrls.values()],
     });
 
-    await Apify.setValue('STATS', { count: requestList.length() });
+    const requestListCount = typeof requestList.length === 'function'
+        ? requestList.length()
+        : 0;
+    const plannedProducts = productsLimit
+        ? Math.min(productsLimit, requestListCount)
+        : requestListCount;
+
+    await Apify.setValue('STATS', { count: plannedProducts });
+
+    const crawlerRequestLimit = productsLimit
+        ? productsLimit * (fetchHtml ? 2 : 1)
+        : undefined;
 
     const crawler = new Apify.CheerioCrawler({
         requestList,
@@ -207,6 +229,7 @@ export const entry = async () => {
         useSessionPool: true,
         maxConcurrency,
         handlePageTimeoutSecs: 60,
+        requestTimeoutSecs: 30,
         ignoreSslErrors: true,
         sessionPoolOptions: {
             sessionOptions: {
@@ -214,9 +237,7 @@ export const entry = async () => {
             },
         },
         maxRequestRetries,
-        maxRequestsPerCrawl: +maxRequestsPerCrawl > 0
-            ? (+maxRequestsPerCrawl * (fetchHtml ? 2 : 1)) + await requestQueue.handledCount() // reusing the same request queue
-            : undefined,
+        maxRequestsPerCrawl: crawlerRequestLimit ?? undefined,
         persistCookiesPerSession: false,
         preNavigationHooks: [async (crawlingContext, requestAsBrowserOptions) => {
             await extendScraperFunction(undefined, {

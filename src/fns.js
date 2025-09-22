@@ -158,10 +158,10 @@ export const requestListFromSitemaps = async ({
                 url: request.url,
                 proxyUrl: proxyConfiguration?.newUrl(session.id),
                 timeout: {
-                    response: 10000,
-                    request: 5000,
+                    response: 25000,
+                    request: 15000,
                 },
-                retry: { limit: 0 },
+                retry: { limit: 1 },
             });
 
             if (![200, 301, 302].includes(response.statusCode)) {
@@ -276,14 +276,17 @@ export const checkForRobots = async ({ checkForBanner = true, filteredSitemapUrl
         });
 
         try {
+            const robotsSessionId = `robots_${Date.now()}_${Math.random().toString(16).slice(2)}`
+                .replace(/[^a-z0-9._~]/gi, '_');
+
             const response = await gotScraping({
                 url: baseUrl.toString(),
                 timeout: {
-                    response: 20000,
-                    request: 17000,
+                    response: 25000,
+                    request: 15000,
                 },
-                proxyUrl: proxyConfiguration?.newUrl(`${Math.random()*10000}`.replace('.', '')),
-                retry: { limit: 0 },
+                proxyUrl: proxyConfiguration?.newUrl(robotsSessionId),
+                retry: { limit: 1 },
             });
 
             if (![200, 301, 302].includes(response.statusCode)) {
@@ -362,12 +365,32 @@ export const proxyConfiguration = async ({
         // only when actually using Apify proxy it needs to be checked for the groups
         if (configuration && configuration.usesApifyProxy) {
             if (blacklist.some((blacklisted) => (configuration.groups || []).includes(blacklisted))) {
-                throw new Error(`\n=======\nThese proxy groups cannot be used in this actor. Choose other group or contact support@apify.com to give you proxy trial:\n\n*  ${blacklist.join('\n*  ')}\n\n=======`);
+                const message = [
+                    '',
+                    '=======',
+                    'These proxy groups cannot be used in this actor. Choose other group or contact support@apify.com to give you proxy trial:',
+                    '',
+                    `*  ${blacklist.join('\n*  ')}`,
+                    '',
+                    '=======',
+                ].join('\n');
+
+                throw new Error(message);
             }
 
             // specific non-automatic proxy groups like RESIDENTIAL, not an error, just a hint
             if (hint.length && !hint.some((group) => (configuration.groups || []).includes(group))) {
-                Apify.utils.log.info(`\n=======\nYou can pick specific proxy groups for better experience:\n\n*  ${hint.join('\n*  ')}\n\n=======`);
+                const hintMessage = [
+                    '',
+                    '=======',
+                    'You can pick specific proxy groups for better experience:',
+                    '',
+                    `*  ${hint.join('\n*  ')}`,
+                    '',
+                    '=======',
+                ].join('\n');
+
+                Apify.utils.log.info(hintMessage);
             }
         }
     }
