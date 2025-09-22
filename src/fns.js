@@ -87,12 +87,15 @@ export const enqueueCollectionProducts = async ({ collectionUrl, proxyConfigurat
         jsonUrl.searchParams.set('limit', `${COLLECTION_PAGE_SIZE}`);
         jsonUrl.searchParams.set('page', `${page}`);
 
+        const sessionId = `${url.hostname}-${page}-${Date.now()}`
+            .replace(/[^a-z0-9._~]/gi, '-');
+
         let response;
 
         try {
             response = await gotScraping({
                 url: jsonUrl.toString(),
-                proxyUrl: proxyConfiguration?.newUrl(`${url.origin}-${page}-${Date.now()}`),
+                proxyUrl: proxyConfiguration?.newUrl(sessionId),
                 timeout: {
                     response: 20000,
                     request: 15000,

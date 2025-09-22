@@ -27,13 +27,25 @@ export const entry = async () => {
 
     await fns.logRunMetadata({ input });
 
-    if (!startUrls?.length) {
+    const startUrlSources = Array.isArray(startUrls)
+        ? startUrls
+            .filter((source) => source)
+            .map((source) => {
+                if (typeof source === 'string') {
+                    return { url: source };
+                }
+
+                return source;
+            })
+        : [];
+
+    if (!startUrlSources.length) {
         throw new Error('Missing "startUrls" input');
     }
 
     const normalizedStartUrls = [];
 
-    for await (const request of fns.fromStartUrls(startUrls, 'INPUTURLS_CLASSIFY')) {
+    for await (const request of fns.fromStartUrls(startUrlSources, 'INPUTURLS_CLASSIFY')) {
         if (request?.url) {
             normalizedStartUrls.push(request.url);
         }
@@ -92,7 +104,7 @@ export const entry = async () => {
 
     if (shouldUseSitemaps) {
         await fns.checkForRobots({
-            startUrls,
+            startUrls: startUrlSources,
             proxyConfiguration,
             filteredSitemapUrls,
             checkForBanner,
@@ -224,7 +236,7 @@ export const entry = async () => {
                 filteredSitemapUrls.add(sitemapUrl);
             }
             await fns.checkForRobots({
-                startUrls,
+                startUrls: startUrlSources,
                 proxyConfiguration,
                 filteredSitemapUrls,
                 checkForBanner,
