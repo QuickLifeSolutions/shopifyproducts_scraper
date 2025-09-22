@@ -341,15 +341,38 @@ export const entry = async () => {
             });
         }],
         handlePageFunction: async (context) => {
-            const { json, request, response } = context;
+            const { json, request, response, requestQueue: crawlerRequestQueue } = context;
 
             log.debug(`Scraping ${request.url}`);
 
+            if (request.userData.label === 'JSON'
+                && response
+                && [401, 403, 451, 429].includes(response.statusCode)
+                && !request.userData.fallbackAttempted) {
+                log.debug('Received access error, retrying via HTML to obtain session', {
+                    url: request.url,
+                    statusCode: response.statusCode,
+                });
+
+                await crawlerRequestQueue.addRequest({
+                    url: request.userData.url,
+                    userData: {
+                        url: request.userData.url,
+                        label: 'HTML',
+                        fallbackForJson: true,
+                    },
+                }, { forefront: true });
+
+                return;
+            }
+
             if (request.userData.label === 'HTML') {
-                await requestQueue.addRequest({
+                await crawlerRequestQueue.addRequest({
                     url: `${request.url}.json`,
                     userData: {
                         label: 'JSON',
+                        url: request.userData.url || request.url,
+                        fallbackAttempted: request.userData.fallbackForJson || request.userData.fallbackAttempted,
                         body: context.body,
                     },
                 }, { forefront: true });
