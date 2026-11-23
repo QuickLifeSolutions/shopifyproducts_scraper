@@ -1,0 +1,70 @@
+{
+  "status": "FAILED",
+  "stopReason": "request_budget",
+  "requests": 20,
+  "sitemapPages": 3,
+  "products": 1,
+  "rows": 2,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/antique-silver-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/blush-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/cafe-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/engaged-3d-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/grace-sealing-wax-spoon",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/blushed-bride-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/garden-party-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/traditional-black-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/protea-wax-stamp",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/silver-fern-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:08:05.695Z",
+  "recognizedSitemaps": 2,
+  "finishedAt": "2026-11-23T16:08:33.665Z",
+  "elapsedMillis": 27970
+}

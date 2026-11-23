@@ -1,0 +1,35 @@
+{
+  "status": "FAILED",
+  "stopReason": "product_limit",
+  "requests": 17,
+  "sitemapPages": 8,
+  "products": 1,
+  "rows": 3,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://smylelabs.com/products/pixel-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-labs-pen",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/cart-pen-replacement-tip",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:24:26.8Z",
+  "recognizedSitemaps": 7,
+  "finishedAt": "2026-11-23T16:24:43.888Z",
+  "elapsedMillis": 17088
+}

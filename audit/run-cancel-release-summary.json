@@ -1,0 +1,20 @@
+{
+  "status": "ABORTED",
+  "stopReason": "cancelled",
+  "requests": 6,
+  "sitemapPages": 3,
+  "products": 0,
+  "rows": 0,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+      "stage": "PRODUCT",
+      "message": "HTTP 429"
+    }
+  ],
+  "startedAt": "2026-11-23T16:25:15.002Z",
+  "recognizedSitemaps": 2,
+  "finishedAt": "2026-11-23T16:25:24.741Z",
+  "elapsedMillis": 9739
+}

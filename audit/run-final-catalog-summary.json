@@ -1,0 +1,14 @@
+{
+  "status": "SUCCEEDED",
+  "stopReason": "product_limit",
+  "requests": 11,
+  "sitemapPages": 8,
+  "products": 1,
+  "rows": 3,
+  "retries": 0,
+  "failures": [],
+  "startedAt": "2026-11-23T16:16:08.797Z",
+  "recognizedSitemaps": 7,
+  "finishedAt": "2026-11-23T16:16:26.537Z",
+  "elapsedMillis": 17740
+}

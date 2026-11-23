@@ -27,7 +27,7 @@ Use the maintained [example input](examples/input.json). The same input is used 
 }
 ```
 
-To discover a catalog, replace `startUrls` with a store root, for example `[{"url":"https://artisaire.com/"}]`. Root discovery checks the Shopify marker and sitemap declarations in robots.txt, follows product sitemap pages (preserving range query parameters), and deduplicates products across overlapping pages. Locale product URLs may share an ID; default rows deduplicate by store hostname, product ID and variant ID. Collection filtering, keyword search and imported URL-list files are not supported. Collection-only URLs are rejected rather than silently scraping another scope.
+For another catalog, replace `startUrls` with its store root, for example `[{"url":"https://artisaire.com/"}]`. Root discovery checks the Shopify marker and sitemap declarations in robots.txt, follows product sitemap pages (preserving range query parameters), and deduplicates products across overlapping pages. Locale product URLs may share an ID; default rows deduplicate by store hostname, product ID and variant ID. Collection filtering, keyword search and imported URL-list files are not supported. Collection-only URLs are rejected rather than silently scraping another scope.
 
 An omitted input or `{}` uses the maintained example. An explicitly cleared `startUrls: []` fails validation. The old README fields `urls`, `useProxy` and `waitForSelector` are invalid; use `startUrls` and `proxyConfig`.
 
@@ -46,7 +46,7 @@ An omitted input or `{}` uses the maintained example. An explicitly cleared `sta
 
 Automatic Apify proxy is the existing default. Explicit `apifyProxyGroups`, `apifyProxyCountry` and custom `proxyUrls` are passed to the SDK unchanged. Cloud runs require Apify or custom proxy access. A requested proxy failure fails visibly; it never silently switches to a direct connection. Local direct diagnostics require explicitly setting `proxyConfig: {"useApifyProxy":false}`. A proxy is not an access guarantee. No residential upgrade, geography or paid enrichment is selected automatically.
 
-Product, row and work limits are different: a product cap does not cap chargeable variant rows. Increase budgets deliberately for large catalogs. Reaching a product/row limit is a successful bounded result; exhausting a request/sitemap budget is a visible partial failure.
+Product, row and work limits are different: a product cap does not cap chargeable variant rows. Increase budgets deliberately for large catalogs. Reaching a product/row limit is a successful bounded result if there were no source/write failures; exhausting a request/sitemap budget is a visible partial failure.
 
 ## Output
 

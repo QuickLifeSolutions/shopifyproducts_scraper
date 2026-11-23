@@ -1,0 +1,55 @@
+{
+  "status": "FAILED",
+  "stopReason": "request_budget",
+  "requests": 20,
+  "sitemapPages": 8,
+  "products": 0,
+  "rows": 0,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://smylelabs.com/products/pixel-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-labs-pen",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/cart-pen-replacement-tip",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/penjamin-cart-pen-ink-replacement",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/testproduct-donotbuy",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-clothing",
+      "stage": "PRODUCT",
+      "message": "HTTP 429"
+    }
+  ],
+  "startedAt": "2026-11-23T16:24:15.759Z",
+  "recognizedSitemaps": 7,
+  "finishedAt": "2026-11-23T16:25:15.601Z",
+  "elapsedMillis": 59842
+}

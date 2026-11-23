@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bk1HNNiotpHcawrZj",
+    "buildNumber": "1.0.3",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:16:56.134Z",
+    "finishedAt": "2026-11-23T16:16:59.488Z",
+    "usageTotalUsd": 0.0007273333333333333
+  },
+  {
+    "id": "KaF4VddJZBbzVivY6",
+    "buildNumber": "1.0.4",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:19:42.715Z",
+    "finishedAt": "2026-11-23T16:19:46.024Z",
+    "usageTotalUsd": 0.0007171111111111111
+  },
+  {
+    "id": "riDkJuKlUUCV7KmUZ",
+    "buildNumber": "1.0.5",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:23:15.951Z",
+    "finishedAt": "2026-11-23T16:23:18.875Z",
+    "usageTotalUsd": 0.0006335555555555556
+  },
+  {
+    "id": "sFLAatt7pIsWhOb3d",
+    "buildNumber": "1.0.2",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:12:20.67Z",
+    "finishedAt": "2026-11-23T16:12:23.856Z",
+    "usageTotalUsd": 0.0006864444444444445
+  },
+  {
+    "id": "xsDZ7PJ8XTJvQcHN0",
+    "buildNumber": "1.0.1",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:06:40.872Z",
+    "finishedAt": "2026-11-23T16:06:53.017Z",
+    "usageTotalUsd": 0.0026824444444444448
+  }
+]

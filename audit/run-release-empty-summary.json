@@ -1,0 +1,19 @@
+{
+  "status": "FAILED",
+  "stopReason": "exhausted",
+  "requests": 2,
+  "sitemapPages": 0,
+  "products": 0,
+  "rows": 0,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://smylelabs.com/products/pixel-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:20:27.593Z",
+  "finishedAt": "2026-11-23T16:20:30.083Z",
+  "elapsedMillis": 2490
+}

@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "operation": "push",
+  "actor": {
+    "id": "EcVXdeCli75Lqff51",
+    "url": "https://console.apify.com/actors/EcVXdeCli75Lqff51"
+  },
+  "build": {
+    "id": "riDkJuKlUUCV7KmUZ",
+    "number": "1.0.5",
+    "status": "SUCCEEDED",
+    "url": "https://console.apify.com/actors/EcVXdeCli75Lqff51/builds/1.0.5"
+  },
+  "exitCode": 0
+}

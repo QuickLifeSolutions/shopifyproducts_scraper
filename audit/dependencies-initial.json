@@ -1,0 +1,246 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@crawlee/core": {
+      "name": "@crawlee/core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "apify"
+      ],
+      "range": "3.2.3-beta.0 - 4.0.0-rc.0",
+      "nodes": [
+        "node_modules/@crawlee/core"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "apify": {
+      "name": "apify",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@crawlee/core",
+        "apify-client"
+      ],
+      "effects": [],
+      "range": "0.22.0-beta.0 - 0.22.0-beta.3 || 3.1.3 - 4.0.0-beta.38",
+      "nodes": [
+        "node_modules/apify"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "apify-client": {
+      "name": "apify-client",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "proxy-agent"
+      ],
+      "effects": [
+        "apify"
+      ],
+      "range": "2.20.1-beta.0 - 3.0.0-beta.12",
+      "nodes": [
+        "node_modules/apify-client"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "basic-ftp": {
+      "name": "basic-ftp",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240853,
+          "name": "basic-ftp",
+          "dependency": "basic-ftp",
+          "title": "basic-ftp: Quadratic-time CPU denial of service in Client.list() Unix directory-listing parser (RE_LINE backtracking)",
+          "url": "https://github.com/advisories/GHSA-c475-qrg2-pj4r",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.2.0"
+        },
+        {
+          "source": 1246355,
+          "name": "basic-ftp",
+          "dependency": "basic-ftp",
+          "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+          "url": "https://github.com/advisories/GHSA-5pm8-86m8-9m6r",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-248",
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=6.2.3"
+        },
+        {
+          "source": 1246367,
+          "name": "basic-ftp",
+          "dependency": "basic-ftp",
+          "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+          "url": "https://github.com/advisories/GHSA-r4jh-29pc-gfqr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-248",
+            "CWE-755"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=6.2.2"
+        }
+      ],
+      "effects": [
+        "get-uri"
+      ],
+      "range": "<=6.2.3",
+      "nodes": [
+        "node_modules/basic-ftp"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "get-uri": {
+      "name": "get-uri",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "basic-ftp"
+      ],
+      "effects": [
+        "pac-proxy-agent"
+      ],
+      "range": "5.0.0 - 8.0.1",
+      "nodes": [
+        "node_modules/get-uri"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244623,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-405"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=7.0.0 <11.0.1"
+        }
+      ],
+      "effects": [
+        "@crawlee/core"
+      ],
+      "range": "7.0.0 - 11.0.0",
+      "nodes": [
+        "node_modules/minimatch"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "pac-proxy-agent": {
+      "name": "pac-proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "get-uri"
+      ],
+      "effects": [
+        "proxy-agent"
+      ],
+      "range": "6.0.0 - 9.1.0",
+      "nodes": [
+        "node_modules/pac-proxy-agent"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    },
+    "proxy-agent": {
+      "name": "proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "pac-proxy-agent"
+      ],
+      "effects": [
+        "apify-client"
+      ],
+      "range": "6.0.0 - 8.0.2",
+      "nodes": [
+        "node_modules/proxy-agent"
+      ],
+      "fixAvailable": {
+        "name": "apify",
+        "version": "3.1.2",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 6,
+      "critical": 0,
+      "total": 8
+    },
+    "dependencies": {
+      "prod": 207,
+      "dev": 88,
+      "optional": 1,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 295
+    }
+  }
+}

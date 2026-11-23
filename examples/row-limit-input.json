@@ -1,0 +1,22 @@
+{
+  "startUrls": [
+    {
+      "url": "https://smylelabs.com/"
+    }
+  ],
+  "maxRequestsPerCrawl": 1,
+  "maxItems": 1,
+  "maxTotalRequests": 20,
+  "maxSitemapPages": 20,
+  "maxConcurrency": 1,
+  "maxRequestRetries": 0,
+  "proxyConfig": {
+    "useApifyProxy": true
+  },
+  "checkForBanner": true,
+  "fetchHtml": false,
+  "debugLog": false,
+  "customData": {},
+  "extendOutputFunction": "async ({ item }) => item",
+  "extendScraperFunction": "async () => {}"
+}

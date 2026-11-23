@@ -1,0 +1,33 @@
+2026-11-23T16:17:45.813Z ACTOR: Pulling container image of build bk1HNNiotpHcawrZj from registry.
+2026-11-23T16:17:46.797Z ACTOR: Creating container.
+2026-11-23T16:17:46.883Z ACTOR: Starting container.
+2026-11-23T16:17:46.885Z ACTOR: Running under "LIMITED_PERMISSIONS".
+2026-11-23T16:17:47.309Z 
+2026-11-23T16:17:47.313Z > actor-shopify-scraper@1.0.0 start
+2026-11-23T16:17:47.315Z > node main.js
+2026-11-23T16:17:47.318Z 
+2026-11-23T16:17:47.822Z INFO  System info {"apifyVersion":"3.8.0","apifyClientVersion":"2.26.0","crawleeVersion":"3.18.2","osType":"Linux","nodeVersion":"v24.22.3"}
+2026-11-23T16:17:48.047Z INFO  Starting Shopify HTTP scraper {"proxyMode":"Apify","groups":[],"country":null}
+2026-11-23T16:17:48.232Z INFO  Fetching public resource {"url":"https://artisaire.com/robots.txt","attempt":1,"requests":1}
+2026-11-23T16:17:49.130Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap.xml","attempt":1,"requests":2}
+2026-11-23T16:17:50.143Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap_products_1.xml","attempt":1,"requests":3}
+2026-11-23T16:17:50.999Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap_products_2.xml","attempt":1,"requests":4}
+2026-11-23T16:18:01.228Z INFO  Fetching public resource {"url":"https://artisaire.com/meta.json","attempt":1,"requests":5}
+2026-11-23T16:18:03.649Z INFO  Fetching public resource {"url":"https://artisaire.com/products/antique-silver-sealing-wax-beads.json","attempt":1,"requests":6}
+2026-11-23T16:18:06.045Z INFO  Fetching public resource {"url":"https://artisaire.com/products/antique-silver-sealing-wax-sticks.json","attempt":1,"requests":7}
+2026-11-23T16:18:06.263Z INFO  Fetching public resource {"url":"https://artisaire.com/products/antique-silver-sealing-wax-sticks.json","attempt":1,"requests":8}
+2026-11-23T16:18:08.757Z INFO  Fetching public resource {"url":"https://artisaire.com/products/cafe-sealing-wax-sticks.json","attempt":1,"requests":9}
+2026-11-23T16:18:11.444Z INFO  Fetching public resource {"url":"https://artisaire.com/products/blush-sealing-wax-sticks.json","attempt":1,"requests":10}
+2026-11-23T16:18:11.915Z INFO  Fetching public resource {"url":"https://artisaire.com/products/blush-sealing-wax-sticks.json","attempt":1,"requests":11}
+2026-11-23T16:18:20.149Z INFO  Fetching public resource {"url":"https://artisaire.com/products/engaged-3d-wax-seals.json","attempt":1,"requests":12}
+2026-11-23T16:18:20.470Z INFO  Fetching public resource {"url":"https://artisaire.com/products/engaged-3d-wax-seals.json","attempt":1,"requests":13}
+2026-11-23T16:18:22.947Z INFO  Fetching public resource {"url":"https://artisaire.com/products/galena-sealing-wax-sticks.json","attempt":1,"requests":14}
+2026-11-23T16:18:25.237Z INFO  Fetching public resource {"url":"https://artisaire.com/products/grace-sealing-wax-spoon.json","attempt":1,"requests":15}
+2026-11-23T16:18:25.764Z INFO  Fetching public resource {"url":"https://artisaire.com/products/grace-sealing-wax-spoon.json","attempt":1,"requests":16}
+2026-11-23T16:18:35.221Z INFO  Fetching public resource {"url":"https://artisaire.com/products/blushed-bride-wax-seals.json","attempt":1,"requests":17}
+2026-11-23T16:18:39.155Z INFO  Fetching public resource {"url":"https://artisaire.com/products/garden-party-wax-seals.json","attempt":1,"requests":18}
+2026-11-23T16:18:41.747Z INFO  Fetching public resource {"url":"https://artisaire.com/products/traditional-black-sealing-wax-sticks.json","attempt":1,"requests":19}
+2026-11-23T16:18:45.356Z INFO  Fetching public resource {"url":"https://artisaire.com/products/protea-wax-stamp.json","attempt":1,"requests":20}
+2026-11-23T16:18:45.896Z INFO  Fetching public resource {"url":"https://artisaire.com/products/protea-wax-stamp.json","attempt":1,"requests":21}
+2026-11-23T16:18:53.230Z INFO  Fetching public resource {"url":"https://artisaire.com/products/silver-fern-wax-seals.json","attempt":1,"requests":22}
+

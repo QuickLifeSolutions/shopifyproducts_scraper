@@ -1,0 +1,19 @@
+{
+  "status": "FAILED",
+  "stopReason": "exhausted",
+  "requests": 2,
+  "sitemapPages": 0,
+  "products": 0,
+  "rows": 0,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://artisaire.com/products/galena-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:12:44.334Z",
+  "finishedAt": "2026-11-23T16:12:57.158Z",
+  "elapsedMillis": 12824
+}

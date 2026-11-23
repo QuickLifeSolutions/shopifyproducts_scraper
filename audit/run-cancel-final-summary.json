@@ -1,0 +1,90 @@
+{
+  "status": "ABORTED",
+  "stopReason": "cancelled",
+  "requests": 29,
+  "sitemapPages": 3,
+  "products": 2,
+  "rows": 4,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/antique-silver-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/cafe-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/blush-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/engaged-3d-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/galena-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/grace-sealing-wax-spoon",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/blushed-bride-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 429"
+    },
+    {
+      "url": "https://artisaire.com/products/garden-party-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/protea-wax-stamp",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/silver-fern-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/rosemary-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/feyra-number-wax-seals",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/champagne-sealing-wax-beads",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://artisaire.com/products/champagne-sealing-wax-sticks",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:17:48.072Z",
+  "recognizedSitemaps": 2,
+  "finishedAt": "2026-11-23T16:19:14.835Z",
+  "elapsedMillis": 86763
+}

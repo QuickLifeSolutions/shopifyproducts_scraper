@@ -1,0 +1,265 @@
+{
+  "status": "FAILED",
+  "stopReason": "product_limit",
+  "requests": 96,
+  "sitemapPages": 8,
+  "products": 10,
+  "rows": 44,
+  "retries": 0,
+  "failures": [
+    {
+      "url": "https://smylelabs.com/products/penjamin-cart-pen-ink-replacement",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-labs-pen",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/danksaber",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/testproduct-donotbuy",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/pixel-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-clothing",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/lip-balm-penjamin-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/penjamin-car-key-cartridge-magnet-replacement-2-pack",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/ninja-flashlight-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/wandjamin-battery-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/red-ball-flashlight-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/car-key-penjamin-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/penjamin-car-key-tip-replacement",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/gas-pump-shaped-torch-flame",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/penjamin-marker-replacement-ink-tips-2-pack",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/lavender-aromatherapy-mist-cartridge-kit",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/raygun-penjamin-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/permanent-marker-cart-battery-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/saber-shaped-gas-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/refillable-raygun-mini-torch-lighter-with-lights-sound-wholesale",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/mini-plug-510-cart-battery-wholesale-20-pack",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/purse-510-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/heartjamin-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-labs-classic-logo-shirt",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/luna-wand-cart-battery-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/inhaler-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/inhaler-3-pack-replaceable-filters",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/smyle-labs-trucker-hat",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/robotjamin-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/tung-tung-sahur-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/moon-wand-cart-battery-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/tnt-penjamin-cart-battery-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/torch-penjamin-cart-battery-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/rocket-pop-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/cup-cart-510-battery-by-mrs-puff",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/lip-balm-cart-pen",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/foojamin-cart-battery-mystery-drop-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/cup-cart-510-battery-by-mrs-puff-copy",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/controller-adapter-510-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/herb-grinder-slot-machine",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/balisong-butterfly-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/football-cart-battery-limited-edition",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/pt/products/pixel-torch",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/products/ghost-filter-cart-battery",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/pt/products/downstem-soaker-by-smyle-labs",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/pt/products/penjamin-cart-pen-ink-replacement",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/pt/products/testproduct-donotbuy",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://smylelabs.com/pt/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+      "stage": "PRODUCT",
+      "message": "HTTP 403"
+    }
+  ],
+  "startedAt": "2026-11-23T16:07:18.362Z",
+  "recognizedSitemaps": 7,
+  "finishedAt": "2026-11-23T16:09:18.536Z",
+  "elapsedMillis": 120174
+}

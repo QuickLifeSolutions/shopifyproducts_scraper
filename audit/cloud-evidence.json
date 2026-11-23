@@ -1,0 +1,1078 @@
+[
+  {
+    "label": "run-artisaire",
+    "id": "5Oz0Jc9CVtzUeAe0A",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "xsDZ7PJ8XTJvQcHN0",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:08:04.488Z",
+    "finishedAt": "2026-11-23T16:08:34.675Z",
+    "wallMillis": 30035,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0020178180086033214,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0004171527777777778,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 1E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0015500000000000002,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.0860554650425913E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.4804676175117494E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "KmiRWwj3wEbFbjOEa",
+    "keyValueStoreId": "PrCNsEFvfSHdsSJNM",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/KmiRWwj3wEbFbjOEa/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/PrCNsEFvfSHdsSJNM/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "request_budget",
+      "requests": 20,
+      "sitemapPages": 3,
+      "products": 1,
+      "rows": 2,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/antique-silver-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/blush-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/cafe-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/engaged-3d-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/grace-sealing-wax-spoon",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/blushed-bride-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/garden-party-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/traditional-black-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/protea-wax-stamp",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/silver-fern-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:08:05.695Z",
+      "recognizedSitemaps": 2,
+      "finishedAt": "2026-11-23T16:08:33.665Z",
+      "elapsedMillis": 27970
+    }
+  },
+  {
+    "label": "run-cancel-final",
+    "id": "SoBQscna77gVWeiK4",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "bk1HNNiotpHcawrZj",
+    "status": "ABORTED",
+    "startedAt": "2026-11-23T16:17:45.606Z",
+    "finishedAt": "2026-11-23T16:19:15.868Z",
+    "wallMillis": 90071,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.003882713621056743,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0012509861111111111,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 2E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00255,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.9081013053655624E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 2.7646496891975404E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "KbroAKBqvAt9OH2QK",
+    "keyValueStoreId": "faZIK4CAuuENJkPMp",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/KbroAKBqvAt9OH2QK/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/faZIK4CAuuENJkPMp/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "ABORTED",
+      "stopReason": "cancelled",
+      "requests": 29,
+      "sitemapPages": 3,
+      "products": 2,
+      "rows": 4,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/antique-silver-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/cafe-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/blush-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/engaged-3d-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/galena-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/grace-sealing-wax-spoon",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/blushed-bride-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 429"
+        },
+        {
+          "url": "https://artisaire.com/products/garden-party-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/protea-wax-stamp",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/silver-fern-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/rosemary-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/feyra-number-wax-seals",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/champagne-sealing-wax-beads",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://artisaire.com/products/champagne-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:17:48.072Z",
+      "recognizedSitemaps": 2,
+      "finishedAt": "2026-11-23T16:19:14.835Z",
+      "elapsedMillis": 86763
+    }
+  },
+  {
+    "label": "run-cancel-release",
+    "id": "C8byE5lvDQB4Zm5MO",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "riDkJuKlUUCV7KmUZ",
+    "status": "ABORTED",
+    "startedAt": "2026-11-23T16:25:13.413Z",
+    "finishedAt": "2026-11-23T16:25:24.922Z",
+    "wallMillis": 11266,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0011244455922527446,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.00015647222222222223,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00095,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 7.680105045437813E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 5.293264985084534E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "xKDb0oLie4Ywz3uC4",
+    "keyValueStoreId": "6DlS1cCEgqsyT6oL1",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/xKDb0oLie4Ywz3uC4/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/6DlS1cCEgqsyT6oL1/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "ABORTED",
+      "stopReason": "cancelled",
+      "requests": 6,
+      "sitemapPages": 3,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://artisaire.com/products/antique-silver-sealing-wax-beads",
+          "stage": "PRODUCT",
+          "message": "HTTP 429"
+        }
+      ],
+      "startedAt": "2026-11-23T16:25:15.002Z",
+      "recognizedSitemaps": 2,
+      "finishedAt": "2026-11-23T16:25:24.741Z",
+      "elapsedMillis": 9739
+    }
+  },
+  {
+    "label": "run-cancel",
+    "id": "uoWbWfZLV1aLcBzwO",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "sFLAatt7pIsWhOb3d",
+    "status": "ABORTED",
+    "startedAt": "2026-11-23T16:15:07.244Z",
+    "finishedAt": "2026-11-23T16:15:27.8Z",
+    "wallMillis": 20351,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0008457685555236207,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0002826527777777778,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00055,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 4.325667396187783E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 3.7901103496551517E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "GP5VI07a858v31oF7",
+    "keyValueStoreId": "jqkkrveBaP6wnj3cJ",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/GP5VI07a858v31oF7/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/jqkkrveBaP6wnj3cJ/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "ABORTED",
+      "stopReason": "cancelled",
+      "requests": 4,
+      "sitemapPages": 3,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [],
+      "startedAt": "2026-11-23T16:15:11.541Z",
+      "recognizedSitemaps": 1
+    }
+  },
+  {
+    "label": "run-defaults-empty",
+    "id": "53k026XUtfUrV0F7S",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "riDkJuKlUUCV7KmUZ",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:24:24.521Z",
+    "finishedAt": "2026-11-23T16:24:44.721Z",
+    "wallMillis": 20016,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0019718349661231043,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.000278,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 1.5000000000000002E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00165,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 1.2942031025886537E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.089293509721756E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "wrFfOWFalvie76HCi",
+    "keyValueStoreId": "Gt2z2CtwCfiYVENcg",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/wrFfOWFalvie76HCi/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/Gt2z2CtwCfiYVENcg/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 17,
+      "sitemapPages": 8,
+      "products": 1,
+      "rows": 3,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-pen",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/cart-pen-replacement-tip",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:24:26.8Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:24:43.888Z",
+      "elapsedMillis": 17088
+    }
+  },
+  {
+    "label": "run-defaults-prefill",
+    "id": "qgNHEFS4fdzyIykfP",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "riDkJuKlUUCV7KmUZ",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:24:13.515Z",
+    "finishedAt": "2026-11-23T16:25:16.776Z",
+    "wallMillis": 63097,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.002966755780546202,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0008763472222222224,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00205,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 1.5825824812054636E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.9582733511924746E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "u4io52FEYRVpDEFaM",
+    "keyValueStoreId": "VkHbYG61BghUvFOGb",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/u4io52FEYRVpDEFaM/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/VkHbYG61BghUvFOGb/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "request_budget",
+      "requests": 20,
+      "sitemapPages": 8,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-pen",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/cart-pen-replacement-tip",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/penjamin-cart-pen-ink-replacement",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/testproduct-donotbuy",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-clothing",
+          "stage": "PRODUCT",
+          "message": "HTTP 429"
+        }
+      ],
+      "startedAt": "2026-11-23T16:24:15.759Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:25:15.601Z",
+      "elapsedMillis": 59842
+    }
+  },
+  {
+    "label": "run-final-catalog",
+    "id": "gLY78jcLYfE17u1bP",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "sFLAatt7pIsWhOb3d",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:16:07.489Z",
+    "finishedAt": "2026-11-23T16:16:27.253Z",
+    "wallMillis": 19551,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.001559160846228401,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0002715416666666667,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 1.5000000000000002E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00125,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 8.491473272442817E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 9.127706289291383E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "Fngu2obKaV40fQM0A",
+    "keyValueStoreId": "wMYQVaqUifPnqGAJ0",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/Fngu2obKaV40fQM0A/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/wMYQVaqUifPnqGAJ0/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "SUCCEEDED",
+      "stopReason": "product_limit",
+      "requests": 11,
+      "sitemapPages": 8,
+      "products": 1,
+      "rows": 3,
+      "retries": 0,
+      "failures": [],
+      "startedAt": "2026-11-23T16:16:08.797Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:16:26.537Z",
+      "elapsedMillis": 17740
+    }
+  },
+  {
+    "label": "run-final-prefill",
+    "id": "MvvrqB76NhoyrNHXr",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "sFLAatt7pIsWhOb3d",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:12:41.381Z",
+    "finishedAt": "2026-11-23T16:12:58.017Z",
+    "wallMillis": 16452,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.000590260424003005,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.00022850000000000002,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00035,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.352287992835045E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 4.408136010169983E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "t89PJNRT1F7TS0ZL0",
+    "keyValueStoreId": "MTOlZ0Th9KsC6T0V3",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/t89PJNRT1F7TS0ZL0/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/MTOlZ0Th9KsC6T0V3/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "exhausted",
+      "requests": 2,
+      "sitemapPages": 0,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://artisaire.com/products/galena-sealing-wax-sticks",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:12:44.334Z",
+      "finishedAt": "2026-11-23T16:12:57.158Z",
+      "elapsedMillis": 12824
+    }
+  },
+  {
+    "label": "run-prefill",
+    "id": "G4W9Icy9auY8RQDuX",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "xsDZ7PJ8XTJvQcHN0",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:07:16.124Z",
+    "finishedAt": "2026-11-23T16:09:19.544Z",
+    "wallMillis": 123180,
+    "memoryMbytes": 256,
+    "timeoutSecs": 180,
+    "usageTotalUsd": 0.004515607173641523,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0017108333333333333,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0.00022,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00245,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 6.254483014345169E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 6.722901016473771E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "OrO60DPTWefWUDXg8",
+    "keyValueStoreId": "pfbJxMad6wrJMQ2Zo",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/OrO60DPTWefWUDXg8/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/pfbJxMad6wrJMQ2Zo/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 96,
+      "sitemapPages": 8,
+      "products": 10,
+      "rows": 44,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/penjamin-cart-pen-ink-replacement",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-pen",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/danksaber",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/testproduct-donotbuy",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-clothing",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/lip-balm-penjamin-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/penjamin-car-key-cartridge-magnet-replacement-2-pack",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/ninja-flashlight-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/wandjamin-battery-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/red-ball-flashlight-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/car-key-penjamin-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/penjamin-car-key-tip-replacement",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/gas-pump-shaped-torch-flame",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/penjamin-marker-replacement-ink-tips-2-pack",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/lavender-aromatherapy-mist-cartridge-kit",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/raygun-penjamin-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/permanent-marker-cart-battery-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/saber-shaped-gas-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/refillable-raygun-mini-torch-lighter-with-lights-sound-wholesale",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/mini-plug-510-cart-battery-wholesale-20-pack",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/purse-510-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/heartjamin-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-classic-logo-shirt",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/luna-wand-cart-battery-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/inhaler-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/inhaler-3-pack-replaceable-filters",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-trucker-hat",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/robotjamin-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/tung-tung-sahur-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/moon-wand-cart-battery-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/tnt-penjamin-cart-battery-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/torch-penjamin-cart-battery-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/rocket-pop-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/cup-cart-510-battery-by-mrs-puff",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/lip-balm-cart-pen",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/foojamin-cart-battery-mystery-drop-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/cup-cart-510-battery-by-mrs-puff-copy",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/controller-adapter-510-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/herb-grinder-slot-machine",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/balisong-butterfly-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/football-cart-battery-limited-edition",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/pt/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/ghost-filter-cart-battery",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/pt/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/pt/products/penjamin-cart-pen-ink-replacement",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/pt/products/testproduct-donotbuy",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/pt/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:07:18.362Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:09:18.536Z",
+      "elapsedMillis": 120174
+    }
+  },
+  {
+    "label": "run-release-empty",
+    "id": "erUzGgkIZea9l1Pec",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "KaF4VddJZBbzVivY6",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:20:25.348Z",
+    "finishedAt": "2026-11-23T16:20:30.288Z",
+    "wallMillis": 4750,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.00042451446106864346,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 6.597222222222223E-05,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00035,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 1.9859988242387774E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.5562400221824646E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "SCDwBM5iLl6N9Bs17",
+    "keyValueStoreId": "80iimteRpdhKGJnfm",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/SCDwBM5iLl6N9Bs17/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/80iimteRpdhKGJnfm/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "exhausted",
+      "requests": 2,
+      "sitemapPages": 0,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:20:27.593Z",
+      "finishedAt": "2026-11-23T16:20:30.083Z",
+      "elapsedMillis": 2490
+    }
+  },
+  {
+    "label": "run-release-prefill",
+    "id": "V41W1SNexA10aSBCJ",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "KaF4VddJZBbzVivY6",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:20:19.361Z",
+    "finishedAt": "2026-11-23T16:20:22.746Z",
+    "wallMillis": 3229,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.00040437354306711095,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 4.4847222222222224E-05,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00035,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.3215077817440036E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 2.204813063144684E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "ucqVmHnlfL76ljqO7",
+    "keyValueStoreId": "DQAUu02NY6CAXWWL5",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/ucqVmHnlfL76ljqO7/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/DQAUu02NY6CAXWWL5/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "exhausted",
+      "requests": 2,
+      "sitemapPages": 0,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:20:21.353Z",
+      "finishedAt": "2026-11-23T16:20:22.554Z",
+      "elapsedMillis": 1201
+    }
+  },
+  {
+    "label": "run-row-limit",
+    "id": "XH6hh4W9QCMQQJbdA",
+    "actorId": "EcVXdeCli75Lqff51",
+    "buildId": "riDkJuKlUUCV7KmUZ",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:25:08.245Z",
+    "finishedAt": "2026-11-23T16:25:47.471Z",
+    "wallMillis": 39051,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.002527314273372293,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.000542375,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0019500000000000001,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 1.4814967289566994E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.5124306082725525E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "ORYPgeWLv7YfbBneo",
+    "keyValueStoreId": "BbAZYVwjF8Va9SHMc",
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/ORYPgeWLv7YfbBneo/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/BbAZYVwjF8Va9SHMc/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "request_budget",
+      "requests": 20,
+      "sitemapPages": 8,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/smyle-labs-pen",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/cart-pen-replacement-tip",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/penjamin-cart-pen-ink-replacement",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/testproduct-donotbuy",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://smylelabs.com/products/perfection-aromatherapy-oil-lavender-eucalpytus",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:25:09.419Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:25:46.561Z",
+      "elapsedMillis": 37142
+    }
+  }
+]

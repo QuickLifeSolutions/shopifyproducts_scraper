@@ -1,0 +1,15 @@
+2026-11-23T16:25:13.669Z ACTOR: Pulling container image of build riDkJuKlUUCV7KmUZ from registry.
+2026-11-23T16:25:13.672Z ACTOR: Creating container.
+2026-11-23T16:25:13.757Z ACTOR: Starting container.
+2026-11-23T16:25:13.759Z ACTOR: Running under "LIMITED_PERMISSIONS".
+2026-11-23T16:25:14.181Z 
+2026-11-23T16:25:14.183Z > actor-shopify-scraper@1.0.0 start
+2026-11-23T16:25:14.185Z > node main.js
+2026-11-23T16:25:14.188Z 
+2026-11-23T16:25:14.825Z INFO  System info {"apifyVersion":"3.8.0","apifyClientVersion":"2.26.0","crawleeVersion":"3.18.2","osType":"Linux","nodeVersion":"v24.22.3"}
+2026-11-23T16:25:14.974Z INFO  Starting Shopify HTTP scraper {"proxyMode":"Apify","groups":[],"country":null}
+2026-11-23T16:25:15.147Z INFO  Fetching public resource {"url":"https://artisaire.com/robots.txt","attempt":1,"requests":1}
+2026-11-23T16:25:16.695Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap.xml","attempt":1,"requests":2}
+2026-11-23T16:25:17.188Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap_products_1.xml","attempt":1,"requests":3}
+2026-11-23T16:25:18.019Z INFO  Fetching public resource {"url":"https://artisaire.com/sitemap_products_2.xml","attempt":1,"requests":4}
+

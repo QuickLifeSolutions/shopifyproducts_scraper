@@ -1,0 +1,12 @@
+{
+  "status": "ABORTED",
+  "stopReason": "cancelled",
+  "requests": 4,
+  "sitemapPages": 3,
+  "products": 0,
+  "rows": 0,
+  "retries": 0,
+  "failures": [],
+  "startedAt": "2026-11-23T16:15:11.541Z",
+  "recognizedSitemaps": 1
+}
