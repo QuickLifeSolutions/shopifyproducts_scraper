@@ -1,0 +1,67 @@
+[
+  {
+    "path": "main.js",
+    "sha256": "8273cfe2a75f6b2549dbac5b2b36caff39a79486d70467dbf0f67641da274c7c",
+    "uploadedMatches": true
+  },
+  {
+    "path": "src/index.js",
+    "sha256": "f1ee3e7c26c75f7c722be242413b9c677db50e5b9d98a69b1c959aabce68a4ab",
+    "uploadedMatches": true
+  },
+  {
+    "path": "src/fns.js",
+    "sha256": "fd2be4ab49f5069596fe2f7e18bae46b7f35a5d1ec15186f7f6df4b7f923e754",
+    "uploadedMatches": true
+  },
+  {
+    "path": "src/scraper.js",
+    "sha256": "830d49e2c15ba3067385b20daf622ea21ab70d024079671f6181fe71e1b33ca6",
+    "uploadedMatches": true
+  },
+  {
+    "path": "src/crawler-transport.js",
+    "sha256": "11ce11e53536c1507a6d01f94422a5ae64e28f20fa7a59757c1df9e78b1581da",
+    "uploadedMatches": true
+  },
+  {
+    "path": "Dockerfile",
+    "sha256": "2299faa25ef36af9679ba92ba4e0d972d5880789c52e45a74bfc9becd2344fa6",
+    "uploadedMatches": true
+  },
+  {
+    "path": "package.json",
+    "sha256": "c666c2a5f30df4ddfd9c828be11a65df6fd2bfaba553451879dfe15089afc376",
+    "uploadedMatches": true
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "c58821885b9edeac25171f44ca6cd6f3ca26af52762b43474cfc1c1c6fc7d736",
+    "uploadedMatches": true
+  },
+  {
+    "path": "INPUT_SCHEMA.json",
+    "sha256": "52354f68fdc3c35899e30f4641e5b98b78270087ee44fedf964aeb8e62cc23cf",
+    "uploadedMatches": true
+  },
+  {
+    "path": ".actor/actor.json",
+    "sha256": "edd201bfb33a4152c90f98d7812734b6a3b930e80191987f39c9fc5896b98113",
+    "uploadedMatches": true
+  },
+  {
+    "path": ".actor/output_schema.json",
+    "sha256": "504382a0bf11609cca238beb3264b76a95c684cfe797c1c2dc9d16eb958eebbc",
+    "uploadedMatches": true
+  },
+  {
+    "path": ".actor/dataset_schema.json",
+    "sha256": "330b713392c53f8c36664e8fd69b000c04b3e5bf21b279cc75a25187d114c426",
+    "uploadedMatches": true
+  },
+  {
+    "path": ".actor/key_value_store_schema.json",
+    "sha256": "8c4822b226490b19afc353dd1667bd3d3281de95452ef9e991cdd05d40d4c6ee",
+    "uploadedMatches": true
+  }
+]

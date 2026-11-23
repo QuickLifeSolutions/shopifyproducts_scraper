@@ -1,0 +1,20 @@
+{
+  "maxRequestRetries": 3,
+  "maxTotalRequests": 60,
+  "startUrls": [
+    {
+      "url": "https://nl.aybl.com/"
+    }
+  ],
+  "maxConcurrency": 1,
+  "maxSitemapPages": 20,
+  "checkForBanner": true,
+  "fetchHtml": false,
+  "extendOutputFunction": "async ({ item }) => item",
+  "extendScraperFunction": "async () => {}",
+  "maxItems": 0,
+  "proxyConfig": {
+    "useApifyProxy": true
+  },
+  "maxRequestsPerCrawl": 3
+}

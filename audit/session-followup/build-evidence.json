@@ -1,0 +1,42 @@
+[
+  {
+    "id": "RkUcEB1FJ5xNkSdZI",
+    "buildNumber": "1.0.7",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:58:39.59Z",
+    "finishedAt": "2026-11-23T16:58:43.177Z",
+    "usageTotalUsd": 0.0007768888888888889,
+    "gitCommitId": null,
+    "gitBranchName": null
+  },
+  {
+    "id": "o5TZ9XKxUeODd24L5",
+    "buildNumber": "1.0.6",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:49:09.587Z",
+    "finishedAt": "2026-11-23T16:49:19.129Z",
+    "usageTotalUsd": 0.002096666666666667,
+    "gitCommitId": null,
+    "gitBranchName": null
+  },
+  {
+    "id": "DFOGdHSbwjd936fNQ",
+    "buildNumber": "0.0.2",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:42:46.351Z",
+    "finishedAt": "2026-11-23T16:43:10.083Z",
+    "usageTotalUsd": 0.005227555555555556,
+    "gitCommitId": "6d74af50fdc5a60ad94fe075a3c8ab93dd95942a",
+    "gitBranchName": "master"
+  },
+  {
+    "id": "HCuVTWFXRbE2yTLdD",
+    "buildNumber": "0.0.1",
+    "status": "SUCCEEDED",
+    "startedAt": "2026-11-23T16:42:07.747Z",
+    "finishedAt": "2026-11-23T16:42:47.258Z",
+    "usageTotalUsd": 0.008762444444444446,
+    "gitCommitId": null,
+    "gitBranchName": null
+  }
+]

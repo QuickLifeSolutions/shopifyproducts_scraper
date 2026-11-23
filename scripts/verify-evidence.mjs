@@ -21,4 +21,24 @@ for (const file of ['cancellation-checkpoint', 'cancellation-release-checkpoint'
     const checkpoint = read(`audit/${file}.json`); assert.equal(checkpoint.status, 'ABORTED'); assert(checkpoint.pending > 0); assert(checkpoint.finishedAt);
 }
 assert(read('audit/runtime-manifest.json').every((file) => file.uploadedMatches));
+if (fs.existsSync('audit/session-followup/cloud-evidence.json')) {
+    const directory = 'audit/session-followup';
+    const runs = read(`${directory}/cloud-evidence.json`);
+    for (const run of runs) {
+        const rows = read(`${directory}/${run.label}-rows.json`);
+        assert.equal(rows.length, run.observedRows);
+        for (const row of rows) assert(rowSchema(row), JSON.stringify(rowSchema.errors));
+        if (run.summary) {
+            assert(summarySchema(run.summary), JSON.stringify(summarySchema.errors));
+            assert.equal(run.summary.rows, rows.length);
+            assert(run.summary.requests <= 100);
+        }
+    }
+    for (const label of ['restored', 'row-cap', 'prefill', 'empty', 'final-cap']) assert(runs.find((run) => run.label === label).observedRows > 0);
+    const capped = read(`${directory}/final-cap-rows.json`);
+    assert.equal(capped.length, 1); assert(capped[0].additional.source_variant_count > capped.length);
+    const checkpoint = read(`${directory}/abort-checkpoint.json`);
+    assert.equal(checkpoint.status, 'ABORTED'); assert(checkpoint.pending > 0); assert(checkpoint.finishedAt);
+    assert(read(`${directory}/runtime-manifest.json`).every((file) => file.uploadedMatches));
+}
 console.log('Saved hosted summaries, output links, typed rows, cancellation checkpoints and upload manifest passed');

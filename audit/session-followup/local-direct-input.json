@@ -1,0 +1,16 @@
+{
+  "maxItems": 1,
+  "maxTotalRequests": 8,
+  "maxConcurrency": 1,
+  "maxSitemapPages": 2,
+  "proxyConfig": {
+    "useApifyProxy": false
+  },
+  "maxRequestRetries": 1,
+  "maxRequestsPerCrawl": 1,
+  "startUrls": [
+    {
+      "url": "https://nl.aybl.com/products/everyday-crew-socks-x3-white"
+    }
+  ]
+}

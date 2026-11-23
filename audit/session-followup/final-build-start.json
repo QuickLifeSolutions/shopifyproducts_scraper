@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "operation": "push",
+  "actor": {
+    "id": "EcVXdeCli75Lqff51",
+    "url": "https://console.apify.com/actors/EcVXdeCli75Lqff51"
+  },
+  "build": {
+    "id": "RkUcEB1FJ5xNkSdZI",
+    "number": "1.0.7",
+    "status": "RUNNING",
+    "url": "https://console.apify.com/actors/EcVXdeCli75Lqff51/builds/1.0.7"
+  }
+}

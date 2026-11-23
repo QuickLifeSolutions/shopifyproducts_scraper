@@ -1,0 +1,628 @@
+[
+  {
+    "label": "abort",
+    "id": "D4gBegTPK84PX6c7U",
+    "buildId": "RkUcEB1FJ5xNkSdZI",
+    "status": "ABORTED",
+    "startedAt": "2026-11-23T16:59:51.757Z",
+    "finishedAt": "2026-11-23T17:00:34.344Z",
+    "wallMillis": 42434,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.001492656928739614,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0005893611111111111,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0008,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 8E-06,
+      "REQUEST_QUEUE_WRITES": 8E-05,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 4.659825935959817E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 5.63599169254303E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "JBArUyebPbDu3xoR4",
+    "keyValueStoreId": "n3HX6aja3KOMq2uh1",
+    "observedRows": 0,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/JBArUyebPbDu3xoR4/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/n3HX6aja3KOMq2uh1/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "ABORTED",
+      "stopReason": "cancelled",
+      "requests": 2,
+      "sitemapPages": 1,
+      "products": 0,
+      "rows": 0,
+      "retries": 0,
+      "failures": [],
+      "startedAt": "2026-11-23T16:59:54.069Z",
+      "finishedAt": "2026-11-23T17:00:06.115Z",
+      "elapsedMillis": 12046
+    }
+  },
+  {
+    "label": "baseline",
+    "id": "6CgosrYc68hWVUhZA",
+    "buildId": "DFOGdHSbwjd936fNQ",
+    "status": "TIMED-OUT",
+    "startedAt": "2026-11-23T16:44:18.21Z",
+    "finishedAt": "2026-11-23T16:46:18.221Z",
+    "wallMillis": 119867,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.001734978488859203,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0016648194444444445,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 5E-05,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 1.7890706658363344E-07,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.498013734817505E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "hhVbCjjtQaZPccfrO",
+    "keyValueStoreId": "4JNqusHPPHNxEm3Gj",
+    "observedRows": 0,
+    "output": null,
+    "summary": null
+  },
+  {
+    "label": "custom",
+    "id": "R4Jn69BrdftOSmPV1",
+    "buildId": "riDkJuKlUUCV7KmUZ",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:44:23.327Z",
+    "finishedAt": "2026-11-23T16:45:52.921Z",
+    "wallMillis": 89398,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0054670865454756554,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.001241638888888889,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 7.000000000000001E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00405,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 0,
+      "REQUEST_QUEUE_WRITES": 0,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 6.523788906633855E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 3.520976752042771E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "ifQ4br114XQaUk1Zj",
+    "keyValueStoreId": "WyYcYKFzenmX9WoFf",
+    "observedRows": 14,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/ifQ4br114XQaUk1Zj/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/WyYcYKFzenmX9WoFf/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 49,
+      "sitemapPages": 4,
+      "products": 3,
+      "rows": 14,
+      "retries": 3,
+      "failures": [
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-x3-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-trainer-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-trainer-socks-3-pairs-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/gift-card",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-double-stripe-crew-sock-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-back-stripe-crew-sock-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/essential-ruched-sports-bra-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/essential-strappy-sports-bra-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/essential-strappy-sports-bra-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-embroidered-crew-socks-3-pack-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-shorts-brown-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-crop-top-olive-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-crop-top-blue-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-sports-bra-taupe-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-sports-bra-pink-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-sports-bra-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-shorts-taupe-marl",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-shorts-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-crop-top-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/mind-over-matter-oversized-t-shirt-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/empower-seamless-leggings-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pack-blue-purple-pink",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pack-nude-mocha-brown",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pack-black-white-cream",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pack-black-white-grey",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/essential-seamless-zip-jacket-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        },
+        {
+          "url": "https://nl.aybl.com/products/essential-seamless-1-2-zip-pullover-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403"
+        }
+      ],
+      "startedAt": "2026-11-23T16:44:24.889Z",
+      "recognizedSitemaps": 3,
+      "finishedAt": "2026-11-23T16:45:51.61Z",
+      "elapsedMillis": 86721
+    }
+  },
+  {
+    "label": "empty",
+    "id": "upvyEvHbnC3pzuJVW",
+    "buildId": "RkUcEB1FJ5xNkSdZI",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T17:00:22.385Z",
+    "finishedAt": "2026-11-23T17:01:10.288Z",
+    "wallMillis": 47622,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.002914221803228061,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0006614166666666667,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 5E-06,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0014500000000000001,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 7.2E-05,
+      "REQUEST_QUEUE_WRITES": 0.00067,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.7570314705371858E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 2.3234821856021882E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "Kr2y3qfUdw8tYf1W7",
+    "keyValueStoreId": "hRf3cw3GelFrmqHqO",
+    "observedRows": 1,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/Kr2y3qfUdw8tYf1W7/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/hRf3cw3GelFrmqHqO/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 18,
+      "sitemapPages": 8,
+      "products": 1,
+      "rows": 1,
+      "retries": 5,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T17:00:23.955Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T17:01:08.682Z",
+      "elapsedMillis": 44727
+    }
+  },
+  {
+    "label": "final-cap",
+    "id": "JHcloJaXh8majREYi",
+    "buildId": "RkUcEB1FJ5xNkSdZI",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T17:00:28.641Z",
+    "finishedAt": "2026-11-23T17:02:06.709Z",
+    "wallMillis": 97816,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0037393538263920285,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0013585555555555556,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 5E-06,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00135,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 9.6E-05,
+      "REQUEST_QUEUE_WRITES": 0.00084,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 4.62906900793314E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 3.850758075714112E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "LWIEojsibx0wsOfjG",
+    "keyValueStoreId": "ardcPVEZeeN6bYQV1",
+    "observedRows": 1,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/LWIEojsibx0wsOfjG/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/ardcPVEZeeN6bYQV1/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 24,
+      "sitemapPages": 4,
+      "products": 1,
+      "rows": 1,
+      "retries": 12,
+      "failures": [
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T17:00:31.526Z",
+      "recognizedSitemaps": 3,
+      "finishedAt": "2026-11-23T17:02:04.776Z",
+      "elapsedMillis": 93250
+    }
+  },
+  {
+    "label": "prefill",
+    "id": "HSfziraXQFEGcGFhg",
+    "buildId": "o5TZ9XKxUeODd24L5",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:55:11.827Z",
+    "finishedAt": "2026-11-23T16:55:58.284Z",
+    "wallMillis": 46277,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0031333577762461375,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0006427361111111112,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 1.5000000000000002E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0015500000000000002,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 8.4E-05,
+      "REQUEST_QUEUE_WRITES": 0.0007800000000000001,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 3.1786086037755015E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 2.4835579097270966E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "wyApCZW1b9ZsTNeYl",
+    "keyValueStoreId": "kkRNCF8F1PliW5fSb",
+    "observedRows": 3,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/wyApCZW1b9ZsTNeYl/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/kkRNCF8F1PliW5fSb/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 21,
+      "sitemapPages": 8,
+      "products": 1,
+      "rows": 3,
+      "retries": 6,
+      "failures": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        },
+        {
+          "url": "https://smylelabs.com/products/downstem-soaker-by-smyle-labs",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T16:55:13.004Z",
+      "recognizedSitemaps": 7,
+      "finishedAt": "2026-11-23T16:55:56.761Z",
+      "elapsedMillis": 43757
+    }
+  },
+  {
+    "label": "product",
+    "id": "rfaJHbyHkVnBUXfqz",
+    "buildId": "o5TZ9XKxUeODd24L5",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:51:35.576Z",
+    "finishedAt": "2026-11-23T16:51:42.938Z",
+    "wallMillis": 7194,
+    "memoryMbytes": 256,
+    "timeoutSecs": 90,
+    "usageTotalUsd": 0.0007582144163499276,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 9.991666666666666E-05,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 0,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.00045000000000000004,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 1.9999999999999998E-05,
+      "REQUEST_QUEUE_WRITES": 0.00017,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 9.146472439169884E-06,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 4.1512772440910344E-06,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "AfyTrM1qeAGLldAt2",
+    "keyValueStoreId": "GbHunBZFikJILulkr",
+    "observedRows": 0,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/AfyTrM1qeAGLldAt2/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/GbHunBZFikJILulkr/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "exhausted",
+      "requests": 5,
+      "sitemapPages": 0,
+      "products": 0,
+      "rows": 0,
+      "retries": 3,
+      "failures": [
+        {
+          "url": "https://nl.aybl.com/products/sculpt-long-sleeve-top-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T16:51:36.836Z",
+      "finishedAt": "2026-11-23T16:51:42.619Z",
+      "elapsedMillis": 5783
+    }
+  },
+  {
+    "label": "restored",
+    "id": "woR4XSmcD5kmnI7Yj",
+    "buildId": "o5TZ9XKxUeODd24L5",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:50:03.333Z",
+    "finishedAt": "2026-11-23T16:51:27.48Z",
+    "wallMillis": 84009,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.00384444206632177,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.0011667916666666667,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 4.5E-05,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0015500000000000002,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 9.999999999999999E-05,
+      "REQUEST_QUEUE_WRITES": 0.0008900000000000001,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 5.033416673541069E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 3.731623291969299E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "YWqud6zGvzaDpcJFP",
+    "keyValueStoreId": "ld4lUsY0bdsvsEZdC",
+    "observedRows": 9,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/YWqud6zGvzaDpcJFP/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/ld4lUsY0bdsvsEZdC/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 25,
+      "sitemapPages": 4,
+      "products": 3,
+      "rows": 9,
+      "retries": 11,
+      "failures": [
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-white",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        },
+        {
+          "url": "https://nl.aybl.com/products/everyday-crew-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T16:50:06.229Z",
+      "recognizedSitemaps": 3,
+      "finishedAt": "2026-11-23T16:51:22.648Z",
+      "elapsedMillis": 76419
+    }
+  },
+  {
+    "label": "row-cap",
+    "id": "kQ3rxGG2mMNqHVan6",
+    "buildId": "o5TZ9XKxUeODd24L5",
+    "status": "FAILED",
+    "startedAt": "2026-11-23T16:55:04.46Z",
+    "finishedAt": "2026-11-23T16:55:26.499Z",
+    "wallMillis": 21813,
+    "memoryMbytes": 256,
+    "timeoutSecs": 120,
+    "usageTotalUsd": 0.0019275576798220477,
+    "usageUsd": {
+      "ACTOR_COMPUTE_UNITS": 0.00030295833333333336,
+      "DATASET_READS": 0,
+      "DATASET_WRITES": 5E-06,
+      "KEY_VALUE_STORE_READS": 5E-06,
+      "KEY_VALUE_STORE_WRITES": 0.0010500000000000002,
+      "KEY_VALUE_STORE_LISTS": 0,
+      "REQUEST_QUEUE_READS": 5.2E-05,
+      "REQUEST_QUEUE_WRITES": 0.00047000000000000004,
+      "DATA_TRANSFER_INTERNAL_GBYTES": 2.6572588831186297E-05,
+      "DATA_TRANSFER_EXTERNAL_GBYTES": 1.6026757657527926E-05,
+      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0,
+      "PROXY_SERPS": 0,
+      "PROXY_UNBLOCKER_UNITS": 0
+    },
+    "datasetId": "CBQjEvtGce7ESOzhx",
+    "keyValueStoreId": "RTEjxZLu44uGSjgdc",
+    "observedRows": 1,
+    "output": {
+      "products": "https://api.apify.com/v2/datasets/CBQjEvtGce7ESOzhx/items",
+      "summary": "https://api.apify.com/v2/key-value-stores/RTEjxZLu44uGSjgdc/records/RUN_SUMMARY"
+    },
+    "summary": {
+      "status": "FAILED",
+      "stopReason": "product_limit",
+      "requests": 13,
+      "sitemapPages": 4,
+      "products": 1,
+      "rows": 1,
+      "retries": 5,
+      "failures": [
+        {
+          "url": "https://nl.aybl.com/products/everyday-ankle-socks-3-pairs-black",
+          "stage": "PRODUCT",
+          "message": "HTTP 403 after crawler retries"
+        }
+      ],
+      "startedAt": "2026-11-23T16:55:05.824Z",
+      "recognizedSitemaps": 3,
+      "finishedAt": "2026-11-23T16:55:20.287Z",
+      "elapsedMillis": 14463
+    }
+  }
+]

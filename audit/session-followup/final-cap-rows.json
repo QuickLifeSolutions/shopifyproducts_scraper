@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://nl.aybl.com/products/everyday-crew-socks-x3-white",
+    "id": "6779416346830",
+    "variant_id": "42120522531022",
+    "title": "Everyday Crew Socks (3 Pack) - Wit",
+    "color": null,
+    "size": "S (UK 2-5)",
+    "material": null,
+    "display_name": null,
+    "description": "Geef je workout een boost met onze Everyday Crew Socks. Een must-have voor je activewear collectie, onze sportsokken zijn gemaakt van een ultra zachte stof om eindeloos comfort te bieden. Voor een pasvorm die net zo ondersteunend als comfortabel is, is deze stijl voorzien van een geribde boogband. Compleet met ons unieke jacquard AYBL logo, voeg deze toe aan uw tas voor een gepolijste workout pasvorm.\nMaat S: EU 34-38 | Maat M: EU 38-42 | Maat L: 42-46\n\n73% Katoen | 23% nylon | 4% Elastaan\n3 paar per verpakking\nHoge pasvorm met ronde hals\nGeribbeld van middenvoet tot kuit\nJacquard AYBL-logo",
+    "sku": "AY1430",
+    "availability": "unknown",
+    "price": 11.2,
+    "currency": "EUR",
+    "product_type": "Socks",
+    "brand": "AYBL",
+    "images_urls": [
+      "https://cdn.shopify.com/s/files/1/0590/6179/7070/products/trio-image-comp_f6564003-1a60-41c6-8d0a-67d8bf6ca5af.jpg?v=1691586012",
+      "https://cdn.shopify.com/s/files/1/0590/6179/7070/products/Productshot_98c94a78-74f0-4b03-9e3e-47ef44af0b63.jpg?v=1691586012",
+      "https://cdn.shopify.com/s/files/1/0590/6179/7070/products/Singlesockimage_88e7107e-7f86-484f-b76e-3d29a72559a5.jpg?v=1691586012",
+      "https://cdn.shopify.com/s/files/1/0590/6179/7070/products/PackShot_1_2ae6e9d4-60ab-4530-9071-a5c7e3b31279.jpg?v=1691586012"
+    ],
+    "video_urls": [],
+    "created_at": "2021-09-22T13:44:38Z",
+    "updated_at": "2026-11-23T17:02:02Z",
+    "published_at": "2024-08-12T10:19:29Z",
+    "additional": {
+      "variant_attributes": "Size: S (UK 2-5)",
+      "variant_title": "S (UK 2-5)",
+      "scraped_at": "2026-11-23T17:02:03.276Z",
+      "barcode": "5060888875706",
+      "taxcode": null,
+      "stock_count": null,
+      "tags": [
+        "20%",
+        "Accessories",
+        "Color_White",
+        "mens",
+        "mens-sale",
+        "non-returnable",
+        "reviews-group-everyday-crew-socks-3-pack",
+        "womens",
+        "womens-sale"
+      ],
+      "weight": "135 g",
+      "requires_shipping": true,
+      "size": "S (UK 2-5)",
+      "source_variant_count": 3
+    }
+  }
+]

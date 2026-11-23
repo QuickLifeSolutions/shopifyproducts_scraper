@@ -1,0 +1,27 @@
+{
+  "id": "RTtOrCLuwbdkujaID",
+  "taggedBuilds": {
+    "beta": {
+      "buildId": "QaBhADIYeamBY3Y3M",
+      "finishedAt": "2025-09-22T15:26:20.186Z",
+      "buildNumberInt": 100013,
+      "buildNumber": "0.1.13"
+    },
+    "latest": {
+      "buildId": "m27QC6sbrbKyNzgIs",
+      "finishedAt": "2026-11-23T16:41:24.411Z",
+      "buildNumberInt": 6,
+      "buildNumber": "0.0.6"
+    }
+  },
+  "defaultRunOptions": {
+    "build": "latest",
+    "timeoutSecs": 3600,
+    "memoryMbytes": 2048
+  },
+  "actorPermissionLevel": "FULL_PERMISSIONS",
+  "exampleRunInput": {
+    "contentType": "application/json; charset=utf-8",
+    "body": "{\n  \"startUrls\": [\n    {\n      \"url\": \"https://smylelabs.com/\"\n    }\n  ],\n  \"maxRequestsPerCrawl\": 1,\n  \"maxItems\": 3,\n  \"maxTotalRequests\": 20,\n  \"maxSitemapPages\": 20,\n  \"maxConcurrency\": 1,\n  \"maxRequestRetries\": 0,\n  \"proxyConfig\": {\n    \"useApifyProxy\": true\n  },\n  \"checkForBanner\": true,\n  \"fetchHtml\": false,\n  \"debugLog\": false,\n  \"customData\": {},\n  \"extendOutputFunction\": \"async ({ item }) => item\",\n  \"extendScraperFunction\": \"async () => {}\"\n}\n"
+  }
+}

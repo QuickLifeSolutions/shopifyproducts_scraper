@@ -1,0 +1,18 @@
+{
+  "proxyConfig": {
+    "useApifyProxy": true
+  },
+  "fetchHtml": false,
+  "maxSitemapPages": 20,
+  "startUrls": [
+    {
+      "url": "https://nl.aybl.com/products/sculpt-long-sleeve-top-black"
+    }
+  ],
+  "maxTotalRequests": 16,
+  "maxConcurrency": 1,
+  "maxRequestsPerCrawl": 1,
+  "checkForBanner": true,
+  "maxItems": 1,
+  "maxRequestRetries": 3
+}

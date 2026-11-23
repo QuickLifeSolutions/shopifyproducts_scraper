@@ -1,0 +1,13 @@
+{
+  "runId": "MrTyFWkhO6hLAuZPz",
+  "buildId": "m27QC6sbrbKyNzgIs",
+  "status": "FAILED",
+  "logPermissionLevel": "LIMITED_PERMISSIONS",
+  "sdkVersion": "2.3.2",
+  "clientMethod": "UserClient.get",
+  "path": "/v2/users/me",
+  "statusCode": 403,
+  "type": "insufficient-permissions",
+  "phase": "ProxyConfiguration._setPasswordIfToken during initialization",
+  "initiatedByThisFollowup": false
+}
