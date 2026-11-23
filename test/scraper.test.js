@@ -50,7 +50,7 @@ test('recognized empty product sitemap succeeds with explicit zero output',async
     const r=await run({}, {routes:{[`${root}sitemap.xml`]:response(xml([]))}});assert.equal(r.summary.status,'SUCCEEDED');assert.equal(r.rows.length,0);assert.equal(r.summary.recognizedSitemaps,1);
 });
 test('transient failures retry within budget; permanent failures do not',async()=>{
-    let tries=0;const r=await run({maxRequestRetries:1},{get:async(url,_opts,routes)=>{if(url.endsWith('a.json')&&tries++===0)return response('busy',503);return routes[url];}});assert.equal(r.summary.retries,1);assert.equal(r.rows.length,6);
+    let tries=0;const r=await run({maxRequestRetries:1},{get:async(url,_opts,routes)=>{if(url.endsWith('/products/a.json')&&tries++===0)return response('busy',503);return routes[url];}});assert.equal(r.summary.retries,1);assert.equal(r.rows.length,6);
 });
 test('currency lookup failure returns null, never guessed USD; shared lookup settles before rows',async()=>{
     const r=await run({}, {routes:{[`${root}meta.json`]:response('missing',404)}});assert(r.rows.every(row=>row.currency===null));assert.equal(r.summary.warnings.length,1);
@@ -68,7 +68,7 @@ test('missing optional fields, safe IDs, unavailable status, and zero/false surv
 });
 test('active cancellation aborts in-flight work and final summary/checkpoint survive teardown',async()=>{
     let cancel;let signalled=false;
-    const r=await run({}, {io:{onCancel:(fn)=>{cancel=fn;}},get:async(url,{signal},routes)=>{if(url.endsWith('a.json')){setTimeout(()=>cancel(),5);await new Promise((resolve,reject)=>{signal.addEventListener('abort',()=>{signalled=true;reject(new Error('aborted'));},{once:true});});}return routes[url];}});
+    const r=await run({}, {io:{onCancel:(fn)=>{cancel=fn;}},get:async(url,{signal},routes)=>{if(url.endsWith('/products/a.json')){setTimeout(()=>cancel(),5);await new Promise((resolve,reject)=>{signal.addEventListener('abort',()=>{signalled=true;reject(new Error('aborted'));},{once:true});});}return routes[url];}});
     assert(signalled);assert.equal(r.summary.status,'ABORTED');assert.equal(r.snapshots.at(-1).summary.status,'ABORTED');assert(r.snapshots.at(-1).pending.some(task=>task.url.endsWith('/a')));
 });
 test('dataset write failure preserves pending task and resumes without treating failed push as emitted',async()=>{
@@ -83,11 +83,22 @@ test('platform abort callback drains teardown before returning and snapshots inc
     let cancel; let abortDone; let last; let notified;
     const done = new Promise(resolve => { notified = resolve; });
     const running = run({}, {io:{onCancel:fn=>{cancel=fn;},save:async state=>{last=state;}},get:async(url,{signal},routes)=>{
-        if(url.endsWith('a.json')) { setTimeout(()=>{abortDone=cancel();notified();},5); await new Promise((resolve,reject)=>signal.addEventListener('abort',()=>setTimeout(()=>reject(new Error('aborted')),15),{once:true})); }
+        if(url.endsWith('/products/a.json')) { setTimeout(()=>{abortDone=cancel();notified();},5); await new Promise((resolve,reject)=>signal.addEventListener('abort',()=>setTimeout(()=>reject(new Error('aborted')),15),{once:true})); }
         return routes[url];
     }});
     await done; assert(last.pending.some(task=>task.url.endsWith('/a'))); await abortDone; assert(last.summary.finishedAt); assert.equal(last.summary.status,'ABORTED'); await running;
 });
 test('invalid extension source is persisted as a failure rather than skipping the summary',async()=>{
     const r=await run({extendOutputFunction:'not a function'});assert.equal(r.summary.status,'FAILED');assert.equal(r.snapshots.at(-1).summary.failures[0].stage,'runtime');
+});
+test('collection URLs preserve master store-wide discovery with an explicit scope warning',async()=>{
+    const r=await run({startUrls:[{url:`${root}collections/accessories`}]});
+    assert.equal(r.summary.status,'SUCCEEDED'); assert.equal(r.rows.length,6);
+    assert(r.summary.warnings.some(w=>w.stage==='scope'&&w.message.includes('collection filtering is not applied')));
+});
+test('crawler-owned rotations count actual attempts without outer-loop retry amplification',async()=>{
+    const r=await run({maxRequestsPerCrawl:1},{io:{managesAttempts:true,managesRetries:true},get:async(url,{onAttempt},routes)=>{
+        onAttempt(); if(url.endsWith('/products/a.json')){onAttempt();onAttempt();} return routes[url];
+    }});
+    assert.equal(r.summary.retries,2); assert.equal(r.summary.requests,8); assert.equal(r.summary.products,1);
 });

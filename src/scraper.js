@@ -14,6 +14,11 @@ export async function scrape(input, io) {
     const state = io.state ?? { version: 1, pending: input.startUrls.map(({ url }) => ({ url, label: /\/products\/[^/]+/.test(new URL(url).pathname) ? 'PRODUCT' : 'ROBOTS', root: url })), seen: [], emitted: [], currencies: {}, checked: [], summary: { status: 'RUNNING', stopReason: null, requests: 0, sitemapPages: 0, products: 0, rows: 0, retries: 0, failures: [], startedAt: new Date().toISOString() } };
     if (state.version !== 1) throw new Error('Unsupported checkpoint version; use fresh storage');
     const summary = state.summary; summary.status = 'RUNNING'; summary.stopReason = null;
+    for (const { url } of input.startUrls) {
+        if (/\/collections\//.test(new URL(url).pathname) && !/\/products\//.test(new URL(url).pathname)) {
+            (summary.warnings ??= []).push({ stage: 'scope', url, message: 'Collection URL accepted for legacy store-wide sitemap discovery; collection filtering is not applied.' });
+        }
+    }
     const seen = new Set(state.seen); const emitted = new Set(state.emitted); const checked = new Set(state.checked);
     const currencyLoads = new Map();
     const controller = new AbortController(); let cancelled = false; let terminal = false;
@@ -41,17 +46,24 @@ export async function scrape(input, io) {
         let current = url;
         for (let redirect = 0; redirect <= 5; redirect++) {
             let response;
-            for (let attempt = 0; attempt <= input.maxRequestRetries; attempt++) {
+            const maxRetries = io.managesRetries ? 0 : input.maxRequestRetries;
+            for (let attempt = 0; attempt <= maxRetries; attempt++) {
                 if (cancelled) throw new Error('cancelled');
-                if (summary.requests >= input.maxTotalRequests) { summary.stopReason = 'request_budget'; throw new Error('Request budget exhausted'); }
-                summary.requests++;
-                io.onRequest?.({ url: current, attempt: attempt + 1, requests: summary.requests });
+                let actualAttempts = 0;
+                const onAttempt = () => {
+                    if (cancelled) throw new Error('cancelled');
+                    if (summary.requests >= input.maxTotalRequests) { summary.stopReason = 'request_budget'; throw new Error('Request budget exhausted'); }
+                    summary.requests++;
+                    if (io.managesAttempts && actualAttempts++) summary.retries++;
+                    io.onRequest?.({ url: current, attempt: io.managesAttempts ? actualAttempts : attempt + 1, requests: summary.requests });
+                };
+                if (!io.managesAttempts) onAttempt();
                 try {
-                    response = await io.get(current, { signal: controller.signal });
+                    response = await io.get(current, { signal: controller.signal, onAttempt });
                     if (response.status === 429 || response.status >= 500) throw new Error(`HTTP ${response.status}`);
                     break;
                 } catch (error) {
-                    if (cancelled || attempt === input.maxRequestRetries || summary.stopReason) throw error;
+                    if (cancelled || attempt === maxRetries || summary.stopReason) throw error;
                     summary.retries++;
                     await delay(Math.min(4000, 500 * (2 ** attempt)), undefined, { signal: controller.signal });
                 }
@@ -166,6 +178,6 @@ export async function scrape(input, io) {
             await extendScraper({ ...helpers, label: 'FINISHED' });
         }
     } catch (error) { summary.status = cancelled ? 'ABORTED' : 'FAILED'; summary.failures.push({ stage: 'runtime', message: error.message.slice(0, 400) }); }
-    finally { terminal = true; summary.finishedAt = new Date().toISOString(); summary.elapsedMillis = Date.now() - Date.parse(summary.startedAt); try { await save(); } finally { finish(); } }
+    finally { terminal = true; summary.finishedAt = new Date().toISOString(); summary.elapsedMillis = Date.now() - Date.parse(summary.startedAt); try { await save(); await io.close?.(); } finally { finish(); } }
     return summary;
 }

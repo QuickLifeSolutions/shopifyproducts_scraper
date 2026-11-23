@@ -6,7 +6,7 @@
     "startUrls": {
       "title": "Start URLs",
       "type": "array",
-      "description": "Public Shopify store roots or direct product URLs. Collection filtering and remote URL-list imports are not supported. The bounded example discovers one product and saves at most three variant rows from the original example store.",
+      "description": "Public Shopify store roots or direct product URLs. Collection URLs retain legacy store-wide sitemap discovery and produce a scope warning; collection filtering is not applied. Remote URL-list imports are unsupported. The bounded example discovers one product and saves at most three variant rows.",
       "default": [
         {
           "url": "https://smylelabs.com/"
@@ -98,9 +98,9 @@
     },
     "maxRequestRetries": {
       "title": "Max request retries",
-      "description": "Retries per HTTP request after network errors, HTTP 429 or 5xx responses.",
-      "default": 0,
-      "prefill": 0,
+      "description": "Crawler retry limit and blocked-session rotation limit per request. All attempts share maxTotalRequests; zero disables retries and rotations.",
+      "default": 3,
+      "prefill": 3,
       "type": "integer",
       "editor": "number",
       "minimum": 0,
@@ -128,9 +128,9 @@
       "title": "maxTotalRequests",
       "type": "integer",
       "editor": "number",
-      "description": "Total HTTP attempt budget, including robots, sitemaps, currency, HTML, products, redirects and retries. Exhaustion is a visible partial failure.",
-      "default": 20,
-      "prefill": 20,
+      "description": "Total actual HTTP attempt budget, including discovery, redirects, crawler retries and blocked-session rotations. Exhaustion is a visible partial failure.",
+      "default": 100,
+      "prefill": 100,
       "minimum": 1,
       "maximum": 100000
     },
