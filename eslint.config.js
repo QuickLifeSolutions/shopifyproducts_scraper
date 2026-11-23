@@ -1,0 +1,1 @@
+export default [{ ignores: ['node_modules/**', 'storage/**', 'audit/private/**'] }, { files: ['**/*.js', '**/*.mjs'], languageOptions: { ecmaVersion: 'latest', sourceType: 'module' }, rules: { 'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], 'no-constant-condition': 'error', 'no-unreachable': 'error' } }];

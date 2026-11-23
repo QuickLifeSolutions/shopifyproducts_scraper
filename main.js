@@ -1,4 +1,4 @@
-import Apify from 'apify';
+import { Actor } from 'apify';
 import { entry } from './src/index.js';
 
-Apify.main(entry);
+await Actor.main(entry);

@@ -1,0 +1,22 @@
+{
+  "startUrls": [
+    {
+      "url": "https://artisaire.com/"
+    }
+  ],
+  "maxRequestsPerCrawl": 1000,
+  "maxItems": 20,
+  "maxTotalRequests": 100,
+  "maxSitemapPages": 20,
+  "maxConcurrency": 1,
+  "maxRequestRetries": 0,
+  "proxyConfig": {
+    "useApifyProxy": true
+  },
+  "checkForBanner": true,
+  "fetchHtml": false,
+  "debugLog": false,
+  "customData": {},
+  "extendOutputFunction": "async ({ item }) => item",
+  "extendScraperFunction": "async ({label}) => { if (label === \"PRENAVIGATION\") await new Promise(resolve => setTimeout(resolve, 1500)); }"
+}

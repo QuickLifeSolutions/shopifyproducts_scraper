@@ -1,0 +1,16 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Products and run diagnostics",
+  "properties": {
+    "products": {
+      "type": "string",
+      "title": "Product variants",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Run summary",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_SUMMARY"
+    }
+  }
+}

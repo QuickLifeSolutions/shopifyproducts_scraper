@@ -1,0 +1,51 @@
+{
+  "actorKeyValueStoreSchemaVersion": 1,
+  "title": "Run diagnostics",
+  "collections": {
+    "summary": {
+      "title": "Run summary",
+      "key": "RUN_SUMMARY",
+      "contentTypes": [
+        "application/json"
+      ],
+      "jsonSchema": {
+        "type": "object",
+        "required": [
+          "status",
+          "stopReason",
+          "failures"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED",
+              "ABORTED"
+            ]
+          },
+          "stopReason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requests": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "startUrls": [
+    {
+      "url": "https://smylelabs.com/products/pixel-torch"
+    }
+  ],
+  "maxRequestsPerCrawl": 10,
+  "maxItems": 0,
+  "maxTotalRequests": 100,
+  "maxSitemapPages": 20,
+  "maxConcurrency": 10,
+  "maxRequestRetries": 3,
+  "proxyConfig": {
+    "useApifyProxy": true
+  },
+  "checkForBanner": true,
+  "fetchHtml": false,
+  "debugLog": false,
+  "customData": {},
+  "extendOutputFunction": "async ({ item }) => item",
+  "extendScraperFunction": "async () => {}"
+}

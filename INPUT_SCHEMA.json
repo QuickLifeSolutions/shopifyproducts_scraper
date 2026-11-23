@@ -1,98 +1,149 @@
 {
-    "title": "Shopify scraper",
-    "type": "object",
-    "schemaVersion": 1,
-    "properties": {
-        "startUrls": {
-            "title": "Start URLs",
-            "type": "array",
-            "description": "Provide Shopify shop URLs as the starting point",
-            "default": [],
-            "prefill": [
-                { "url": "https://smylelabs.com/" }
-            ],
-            "editor": "requestListSources"
-        },
-        "maxRequestsPerCrawl": {
-            "title": "Max items",
-            "description": "Maximum number of items to scrape. Set it to 0 to scrape everything.",
-            "default": 10,
-            "prefill": 10,
-            "type": "integer",
-            "editor": "number"
-        },
-        "proxyConfig": {
-            "title": "Proxy Configuration",
-            "type": "object",
-            "description": "Use either automatic Apify proxies, Residentials or your own.",
-            "prefill": { "useApifyProxy": true },
-            "default": { "useApifyProxy": true },
-            "editor": "proxy",
-            "sectionCaption": "Advanced options (proxy configuration, extend output, debug mode)"
-        },
-        "checkForBanner": {
-            "title": "Check for Shopify on robots",
-            "description": "Ensure that the remote robots.txt file contains the Shopify keyword.",
-            "editor": "checkbox",
-            "default": true,
-            "type": "boolean"
-        },
-        "extendOutputFunction": {
-            "title": "Extend Output Function",
-            "description": "Add or remove properties on the output object or omit the output returning null",
-            "type": "string",
-            "default": "async ({ data, item, product, images, fns, name, request, variants, context, customData, input, Apify }) => {\n  return item;\n}",
-            "prefill": "async ({ data, item, product, images, fns, name, request, variants, context, customData, input, Apify }) => {\n  return item;\n}",
-            "editor": "javascript",
-            "sectionCaption": "Extend scraper functionality",
-            "sectionDescription": "You can change the output of the items for your dataset here, or add additional behavior on the scraper."
-        },
-        "extendScraperFunction": {
-            "title": "Extend Scraper Function",
-            "description": "Advanced function that allows you to extend the default scraper functionality, allowing you to manually perform actions on the page",
-            "type": "string",
-            "default": "async ({ fns, customData, Apify, label }) => {\n \n}",
-            "prefill": "async ({ fns, customData, Apify, label }) => {\n \n}",
-            "editor": "javascript"
-        },
-        "customData": {
-            "title": "Custom data",
-            "description": "Any data that you want to have available inside the Extend Output/Scraper Function",
-            "default": {},
-            "prefill": {},
-            "type": "object",
-            "editor": "json"
-        },
-        "fetchHtml": {
-            "title": "Fetch HTML",
-            "description": "If you decide to fetch the HTML of the pages, it will take twice as long. Make sure to only enable this if needed",
-            "default": false,
-            "editor": "checkbox",
-            "type": "boolean"
-        },
-        "maxConcurrency": {
-            "title": "Max concurrency",
-            "description": "Max concurrency to use",
-            "default": 10,
-            "prefill": 10,
-            "type": "integer",
-            "editor": "number"
-        },
-        "maxRequestRetries": {
-            "title": "Max request retries",
-            "description": "Set the max request retries",
-            "default": 3,
-            "prefill": 3,
-            "type": "integer",
-            "editor": "number"
-        },
-        "debugLog": {
-            "title": "Debug Log",
-            "description": "Enable a more verbose logging to be able to understand what's happening during the scraping",
-            "type": "boolean",
-            "default": false,
-            "editor": "checkbox"
+  "title": "Shopify scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "Public Shopify store roots or direct product URLs. Collection filtering and remote URL-list imports are not supported. The bounded example targets one public product; store roots discover product sitemaps.",
+      "default": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch"
         }
+      ],
+      "prefill": [
+        {
+          "url": "https://smylelabs.com/products/pixel-torch"
+        }
+      ],
+      "editor": "requestListSources",
+      "minItems": 1,
+      "maxItems": 100
     },
-    "required": []
+    "maxRequestsPerCrawl": {
+      "title": "Maximum products",
+      "description": "Global product limit, across all stores. One product can emit multiple variant rows. Zero removes the product cap; request and sitemap budgets still apply.",
+      "default": 10,
+      "prefill": 10,
+      "type": "integer",
+      "editor": "number",
+      "minimum": 0,
+      "maximum": 100000
+    },
+    "proxyConfig": {
+      "title": "Proxy Configuration",
+      "type": "object",
+      "description": "Automatic Apify proxy by default; explicit residential groups/country or custom proxy URLs are preserved. Cloud runs require a proxy. Proxies do not guarantee site access.",
+      "prefill": {
+        "useApifyProxy": true
+      },
+      "default": {
+        "useApifyProxy": true
+      },
+      "editor": "proxy",
+      "sectionCaption": "Advanced options (proxy configuration, extend output, debug mode)"
+    },
+    "checkForBanner": {
+      "title": "Check for Shopify on robots",
+      "description": "Ensure that the remote robots.txt file contains the Shopify keyword.",
+      "editor": "checkbox",
+      "default": true,
+      "type": "boolean",
+      "prefill": true
+    },
+    "extendOutputFunction": {
+      "title": "Extend Output Function",
+      "description": "Trusted owner JavaScript, not sandboxed. Receives item, product, data, context, fns, input, customData, request and modern Apify Actor. Return object(s) or null; changes can override the default dataset contract.",
+      "type": "string",
+      "default": "async ({ item }) => item",
+      "prefill": "async ({ item }) => item",
+      "editor": "javascript",
+      "sectionCaption": "Extend scraper functionality",
+      "sectionDescription": "You can change the output of the items for your dataset here, or add additional behavior on the scraper."
+    },
+    "extendScraperFunction": {
+      "title": "Extend Scraper Function",
+      "description": "Trusted owner JavaScript hooks: SETUP, RUN, FILTER_SITEMAP_URL, PRENAVIGATION, POSTNAVIGATION, FINISHED. HTTP options are informational; SDK2 crawler/requestQueue internals are no longer exposed.",
+      "type": "string",
+      "default": "async () => {}",
+      "prefill": "async () => {}",
+      "editor": "javascript"
+    },
+    "customData": {
+      "title": "Custom data",
+      "description": "Any data that you want to have available inside the Extend Output/Scraper Function",
+      "default": {},
+      "prefill": {},
+      "type": "object",
+      "editor": "json"
+    },
+    "fetchHtml": {
+      "title": "Fetch HTML",
+      "description": "Additionally fetch static product HTML for context.$ in the output hook. No JavaScript execution or dynamic rendering. Uses extra requests.",
+      "default": false,
+      "editor": "checkbox",
+      "type": "boolean",
+      "prefill": false
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "description": "Maximum concurrent product requests; discovery stays sequential.",
+      "default": 10,
+      "prefill": 10,
+      "type": "integer",
+      "editor": "number",
+      "minimum": 1,
+      "maximum": 50
+    },
+    "maxRequestRetries": {
+      "title": "Max request retries",
+      "description": "Retries per HTTP request after network errors, HTTP 429 or 5xx responses.",
+      "default": 3,
+      "prefill": 3,
+      "type": "integer",
+      "editor": "number",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "debugLog": {
+      "title": "Debug Log",
+      "description": "Enable a more verbose logging to be able to understand what's happening during the scraping",
+      "type": "boolean",
+      "default": false,
+      "editor": "checkbox",
+      "prefill": false
+    },
+    "maxItems": {
+      "title": "maxItems",
+      "type": "integer",
+      "editor": "number",
+      "description": "Global dataset row cap; zero means no row cap. Can truncate variants of the final product.",
+      "default": 0,
+      "prefill": 0,
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "maxTotalRequests": {
+      "title": "maxTotalRequests",
+      "type": "integer",
+      "editor": "number",
+      "description": "Total HTTP attempt budget, including robots, sitemaps, currency, HTML, products, redirects and retries. Exhaustion is a visible partial failure.",
+      "default": 100,
+      "prefill": 100,
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "maxSitemapPages": {
+      "title": "maxSitemapPages",
+      "type": "integer",
+      "editor": "number",
+      "description": "Maximum fetched sitemap documents, independent of product/row limits.",
+      "default": 20,
+      "prefill": 20,
+      "minimum": 1,
+      "maximum": 10000
+    }
+  },
+  "required": []
 }

@@ -1,316 +1,46 @@
-import Apify from 'apify';
+import { Actor, log } from 'apify';
+import { download, publicUrl } from './fns.js';
+import { scrape } from './scraper.js';
+export { scrape } from './scraper.js';
 
-import { load } from 'cheerio';
-import * as fns from './fns.js';
-
-const { log } = Apify.utils;
-
-export const entry = async () => {
-    /** @type {any} */
-    const input = await Apify.getInput();
-
-    const {
-        startUrls = [],
-        maxConcurrency = 20,
-        maxRequestsPerCrawl,
-        maxRequestRetries = 3,
-        proxyConfig,
-        debugLog = false,
-        fetchHtml = false,
-        checkForBanner = true,
-    } = input;
-
-    if (debugLog) {
-        log.setLevel(log.LEVELS.DEBUG);
+export const DEFAULTS = { startUrls: [{ url: 'https://smylelabs.com/products/pixel-torch' }], maxRequestsPerCrawl: 10, maxItems: 0, maxTotalRequests: 100, maxSitemapPages: 20, maxConcurrency: 10, maxRequestRetries: 3, proxyConfig: { useApifyProxy: true }, checkForBanner: true, fetchHtml: false, debugLog: false, customData: {}, extendOutputFunction: 'async ({ item }) => item', extendScraperFunction: 'async () => {}' };
+export function normalizeInput(raw = {}) {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Input must be an object');
+    for (const key of ['urls', 'waitForSelector', 'useProxy']) if (key in raw) throw new Error(`Unsupported input ${key}; use startUrls/proxyConfig; JavaScript rendering is not supported`);
+    const input = { ...DEFAULTS, ...raw };
+    if (!Array.isArray(input.startUrls) || !input.startUrls.length || input.startUrls.length > 100) throw new Error('startUrls must contain 1–100 public store or product URLs');
+    input.startUrls = [...new Set(input.startUrls.map((s) => publicUrl(typeof s === 'string' ? s : s?.url).href))].map((url) => ({ url }));
+    for (const source of input.startUrls) {
+        const url = new URL(source.url);
+        if (/\/collections\//.test(url.pathname) && !/\/products\//.test(url.pathname)) throw new Error('Collection filtering is not supported; use a store root or direct product URL');
+        if (/\/products\//.test(url.pathname)) { url.pathname = url.pathname.replace(/\.json$/, '').replace(/\/$/, ''); url.search = ''; source.url = url.href; }
     }
-
-    const proxyConfiguration = await fns.proxyConfiguration({
-        proxyConfig,
+    for (const [key, min, max] of [['maxRequestsPerCrawl', 0, 100000], ['maxItems', 0, 1000000], ['maxTotalRequests', 1, 100000], ['maxSitemapPages', 1, 10000], ['maxConcurrency', 1, 50], ['maxRequestRetries', 0, 5]]) if (!Number.isSafeInteger(input[key]) || input[key] < min || input[key] > max) throw new Error(`${key} must be an integer between ${min} and ${max}`);
+    for (const key of ['checkForBanner', 'fetchHtml', 'debugLog']) if (typeof input[key] !== 'boolean') throw new Error(`${key} must be boolean`);
+    if (!input.proxyConfig || typeof input.proxyConfig !== 'object' || Array.isArray(input.proxyConfig)) throw new Error('proxyConfig must be an object');
+    return input;
+}
+export async function entry() {
+    let input;
+    try { input = normalizeInput((await Actor.getInput()) ?? {}); }
+    catch (error) { await Actor.setValue('RUN_SUMMARY', { status: 'FAILED', stopReason: 'invalid_input', failures: [{ message: error.message }] }); throw error; }
+    if (input.debugLog) log.setLevel(log.LEVELS.DEBUG);
+    let proxyConfiguration;
+    try {
+        proxyConfiguration = await Actor.createProxyConfiguration(input.proxyConfig);
+        if (!proxyConfiguration && (Actor.isAtHome() || input.proxyConfig.useApifyProxy || input.proxyConfig.proxyUrls?.length)) throw new Error('Requested proxy is unavailable; provide valid Apify proxy credentials or custom proxy URLs. No automatic direct fallback is allowed.');
+    } catch (error) { await Actor.setValue('RUN_SUMMARY', { status: 'FAILED', stopReason: 'proxy_error', failures: [{ message: 'Proxy initialization failed; verify proxy credentials, access and selected groups.' }] }); throw error; }
+    log.info('Starting Shopify HTTP scraper', { proxyMode: proxyConfiguration?.usesApifyProxy ? 'Apify' : proxyConfiguration ? 'custom' : 'direct', groups: input.proxyConfig.apifyProxyGroups ?? [], country: input.proxyConfig.apifyProxyCountry ?? null });
+    const previous = await Actor.getValue('CHECKPOINT');
+    if (previous && JSON.stringify(previous.input) !== JSON.stringify(input)) throw new Error('Input differs from checkpoint; reset storage or start a fresh run');
+    const summary = await scrape(input, {
+        state: previous?.state,
+        get: (url, options) => download(url, { ...options, proxyConfiguration }),
+        push: (row) => Actor.pushData(row),
+        onRequest: (details) => { const url = new URL(details.url); log.info('Fetching public resource', { ...details, url: `${url.origin}${url.pathname}` }); },
+        save: async (state) => { await Actor.setValue('CHECKPOINT', { input, state }); await Actor.setValue('RUN_SUMMARY', state.summary); },
+        onCancel: (cancel) => { Actor.on('aborting', cancel); Actor.on('migrating', cancel); process.once('SIGINT', cancel); process.once('SIGTERM', cancel); },
     });
-
-    if (!startUrls?.length) {
-        throw new Error('Missing "startUrls" input');
-    }
-
-    /**
-     * @type {Set<string>}
-     */
-    const filteredSitemapUrls = new Set(await Apify.getValue('FILTERED') || []);
-
-    const persistState = async () => {
-        await Apify.setValue('FILTERED', [...filteredSitemapUrls.values()]);
-    };
-
-    Apify.events.on('aborting', persistState);
-    Apify.events.on('migrating', persistState);
-
-    await fns.checkForRobots({
-        startUrls,
-        proxyConfiguration,
-        filteredSitemapUrls,
-        checkForBanner,
-    });
-
-    const extendOutputFunction = await fns.extendFunction({
-        key: 'extendOutputFunction',
-        map: async ({ product, url, images, imagesWithoutVariants }) => {
-            if (!product) {
-                return;
-            }
-
-            const created_at = fns.coalesceProps([product], ['created_at', 'createdAt']);
-            const updated_at = fns.coalesceProps([product], ['updated_at', 'updatedAt']);
-            const published_at = fns.coalesceProps([product], ['published_at', 'publishedAt']);
-            const product_type = fns.coalesceProps([product], ['product_type', 'productType']);
-
-            return product.variants.map((variant) => {
-                const { name, props } = fns.getVariantAttributes(variant, product);
-                const description = fns.coalesceProps([product], ['body_html', 'descriptionHtml', 'description']);
-                const stock_count = fns.coalesceProps([variant], ['inventoryQuantity', 'inventory_quantity']);
-                const availableForSale = fns.coalesceProps([variant], ['availableForSale', 'available_for_sale']);
-                const weight_unit = fns.coalesceProps([variant], ['weight_unit', 'weightUnit']);
-                const requires_shipping = fns.coalesceProps([variant], ['requiresShipping', 'requires_shipping']);
-                const display_name = fns.coalesceProps([variant], ['displayName', 'display_name']);
-
-                return {
-                    url,
-                    color: props.color ?? null,
-                    size: props.size ?? null,
-                    material: props.material ?? null,
-                    display_name: display_name ?? null,
-                    title: product.title,
-                    id: `${fns.removeGuid(product.id)}`,
-                    description: (description && fns.stripHtml(description)?.result) || null,
-                    sku: `${variant.sku || fns.removeGuid(variant.id)}`,
-                    // eslint-disable-next-line no-nested-ternary
-                    availability: +stock_count
-                        ? (stock_count > 0 ? 'in stock' : 'out of stock')
-                        : availableForSale ? 'in stock' : 'out of stock',
-                    price: +variant.price || null,
-                    currency: 'USD',
-                    product_type,
-                    images_urls: fns.uniqueNonEmptyArray([
-                        images.get(variant.image_id)?.src,
-                        imagesWithoutVariants,
-                        product.image?.src,
-                    ].flat().filter((s) => s).map(fns.removeUrlQueryString)),
-                    brand: product.vendor,
-                    video_urls: [],
-                    created_at: fns.safeIsoDate(props.created_at ?? created_at),
-                    updated_at: fns.safeIsoDate(props.updated_at ?? updated_at),
-                    published_at: fns.safeIsoDate(props.published_at ?? published_at),
-                    additional: {
-                        variant_attributes: name,
-                        variant_title: variant.title,
-                        scraped_at: new Date(),
-                        barcode: variant.barcode || null,
-                        taxcode: variant.taxcode || null,
-                        stock_count: stock_count ?? null,
-                        tags: fns.uniqueNonEmptyArray(Array.isArray(product.tags) ? product.tags : (product.tags ?? '').split(/,\s*/g)),
-                        weight: variant.weight ? `${variant.weight} ${weight_unit}` : null,
-                        requires_shipping: requires_shipping || null,
-                        ...Object.entries(props)
-                            .filter(([prop]) => ![
-                                'color',
-                                'size',
-                                'material',
-                                'created_at',
-                                'updated_at',
-                                'published_at',
-                            ].includes(prop))
-                            .reduce((out, [prop, value]) => ({ ...out, [prop]: value }), {}),
-                    },
-                };
-            });
-        },
-        output: async (data) => {
-            await Apify.pushData(data);
-        },
-        input,
-        helpers: {
-            fns,
-        },
-    });
-
-    const extendScraperFunction = await fns.extendFunction({
-        key: 'extendScraperFunction',
-        input,
-        helpers: {
-            fns,
-        },
-    });
-
-    const requestQueue = await Apify.openRequestQueue();
-
-    await extendScraperFunction(undefined, {
-        proxyConfiguration,
-        filteredSitemapUrls,
-        requestQueue,
-        label: 'SETUP',
-    });
-
-    const requestList = await fns.requestListFromSitemaps({
-        proxyConfiguration,
-        requestQueue,
-        maxConcurrency,
-        limit: +maxRequestsPerCrawl,
-        filter: async (url) => {
-            const isProduct = /\/products\//.test(url);
-            const isSitemap = /sitemap_products_\d+/.test(url);
-
-            if (isSitemap) {
-                return true;
-            }
-
-            if (!isProduct) {
-                return false;
-            }
-
-            /** @type {boolean} */
-            let filtered = isProduct;
-
-            /** @param {boolean} result */
-            const filter = (result) => {
-                filtered = filtered && result;
-            };
-
-            await extendScraperFunction(undefined, {
-                url,
-                filter,
-                isSitemap,
-                isProduct,
-                label: 'FILTER_SITEMAP_URL',
-            });
-
-            return filtered;
-        },
-        map: (url) => {
-            return {
-                url: fetchHtml ? url : `${url}.json`,
-                userData: {
-                    url,
-                    label: fetchHtml
-                        ? 'HTML'
-                        : 'JSON',
-                },
-            };
-        },
-        sitemapUrls: [...filteredSitemapUrls.values()],
-    });
-
-    await Apify.setValue('STATS', { count: requestList.length() });
-
-    const crawler = new Apify.CheerioCrawler({
-        requestList,
-        proxyConfiguration,
-        requestQueue,
-        useSessionPool: true,
-        maxConcurrency,
-        handlePageTimeoutSecs: 60,
-        ignoreSslErrors: true,
-        sessionPoolOptions: {
-            sessionOptions: {
-                maxErrorScore: 0.5,
-            },
-        },
-        maxRequestRetries,
-        maxRequestsPerCrawl: +maxRequestsPerCrawl > 0
-            ? (+maxRequestsPerCrawl * (fetchHtml ? 2 : 1)) + await requestQueue.handledCount() // reusing the same request queue
-            : undefined,
-        persistCookiesPerSession: false,
-        preNavigationHooks: [async (crawlingContext, requestAsBrowserOptions) => {
-            await extendScraperFunction(undefined, {
-                label: 'PRENAVIGATION',
-                crawlingContext,
-                requestAsBrowserOptions,
-            });
-        }],
-        postNavigationHooks: [async (crawlingContext) => {
-            await extendScraperFunction(undefined, {
-                label: 'POSTNAVIGATION',
-                crawlingContext,
-            });
-        }],
-        handlePageFunction: async (context) => {
-            const { json, request, response } = context;
-
-            log.debug(`Scraping ${request.url}`);
-
-            if (request.userData.label === 'HTML') {
-                await requestQueue.addRequest({
-                    url: `${request.url}.json`,
-                    userData: {
-                        label: 'JSON',
-                        body: context.body,
-                    },
-                }, { forefront: true });
-
-                return;
-            }
-
-            if (!json?.product?.title) {
-                if (!json?.title) {
-                    // this is the last resort
-                    if (debugLog) {
-                        const kvFriendlyNameUrl = new URL(request.url);
-                        await Apify.setValue(kvFriendlyNameUrl.pathname.replace(/[^a-z\-.0-9]/gi, '').slice(0, 100), json);
-                    }
-
-                    if (response.statusCode !== 404) {
-                        throw new Error('Missing product prop or title');
-                    }
-
-                    return;
-                }
-            }
-
-            const product = json.product ?? json;
-
-            context.$ = request.userData.body
-                ? load(request.userData.body, { decodeEntities: true })
-                : context.$;
-
-            const url = request.url.replace('.json', '');
-            const variants = fns.mapIdsFromArray(product.variants);
-            const images = fns.mapIdsFromArray([...product.images, product.image]);
-            /** @type {string[]} */
-            const imagesWithoutVariants = (product.images ?? [])
-                .filter(({ variant_ids, src }) => (src && !(variant_ids?.length)))
-                .map(({ src }) => src);
-
-            await extendOutputFunction({
-                product,
-                variants,
-                url,
-                images,
-                imagesWithoutVariants,
-            }, { context });
-        },
-        handleFailedRequestFunction: async ({ request, error }) => {
-            log.exception(error, 'Failed all retries', { url: request.url });
-
-            await Apify.pushData({
-                '#failed': Apify.utils.createRequestDebugInfo(request),
-            });
-        },
-    });
-
-    await extendScraperFunction(undefined, {
-        crawler,
-        requestList,
-        label: 'RUN',
-    });
-
-    if (!debugLog) {
-        fns.patchLog(crawler);
-    }
-
-    await crawler.run();
-
-    await extendScraperFunction(undefined, {
-        crawler,
-        label: 'FINISHED',
-    });
-
-    await persistState();
-};
+    log.info('Scrape finished', summary);
+    if (summary.status === 'FAILED') throw new Error(`Scrape failed: ${summary.stopReason}; see RUN_SUMMARY (${summary.failures.length} failures)`);
+}

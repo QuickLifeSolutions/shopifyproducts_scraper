@@ -1,0 +1,225 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "required": [
+      "url",
+      "id",
+      "variant_id",
+      "title",
+      "sku",
+      "color",
+      "size",
+      "material",
+      "display_name",
+      "description",
+      "currency",
+      "product_type",
+      "brand",
+      "created_at",
+      "updated_at",
+      "published_at",
+      "availability",
+      "price",
+      "images_urls",
+      "video_urls",
+      "additional"
+    ],
+    "properties": {
+      "url": {
+        "type": "string",
+        "format": "uri"
+      },
+      "id": {
+        "type": "string"
+      },
+      "variant_id": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "sku": {
+        "type": "string"
+      },
+      "color": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "size": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "material": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "display_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "description": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "currency": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "product_type": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "brand": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "published_at": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "availability": {
+        "enum": [
+          "in stock",
+          "out of stock",
+          "unknown"
+        ]
+      },
+      "price": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "images_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "video_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additional": {
+        "type": "object",
+        "required": [
+          "variant_attributes",
+          "scraped_at",
+          "requires_shipping",
+          "stock_count"
+        ],
+        "properties": {
+          "variant_attributes": {
+            "type": "string"
+          },
+          "scraped_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requires_shipping": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "stock_count": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Product variants",
+      "transformation": {
+        "fields": [
+          "title",
+          "variant_id",
+          "sku",
+          "price",
+          "currency",
+          "availability",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": {
+            "label": "Product",
+            "format": "text"
+          },
+          "variant_id": {
+            "label": "Variant ID",
+            "format": "text"
+          },
+          "sku": {
+            "label": "SKU",
+            "format": "text"
+          },
+          "price": {
+            "label": "Price",
+            "format": "number"
+          },
+          "currency": {
+            "label": "Currency",
+            "format": "text"
+          },
+          "availability": {
+            "label": "Availability",
+            "format": "text"
+          },
+          "url": {
+            "label": "Product URL",
+            "format": "link"
+          }
+        }
+      }
+    }
+  }
+}

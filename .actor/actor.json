@@ -1,0 +1,1 @@
+{"actorSpecification":1,"name":"shopify-products-scraper","title":"Shopify Products Scraper","version":"1.0","meta":{"generatedBy":"Codex with GPT-6"},"dockerfile":"../Dockerfile","readme":"../README.md","input":"../INPUT_SCHEMA.json","output":"./output_schema.json","storages":{"dataset":"./dataset_schema.json","keyValueStore":"./key_value_store_schema.json"}}
