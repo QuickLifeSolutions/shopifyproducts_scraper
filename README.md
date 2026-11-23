@@ -6,17 +6,17 @@ This is an HTTP scraper. It does not execute JavaScript, log in, solve challenge
 
 ## Quick start
 
-Use the maintained [example input](examples/input.json). The same input is used by runtime defaults, the Input form and [API example](examples/api-input.json). The small example targets one public product; its availability can change.
+Use the maintained [example input](examples/input.json). The same input is used by runtime defaults, the Input form and [API example](examples/api-input.json). The small example discovers at most one product and saves at most three variants from the original example store; public availability can change.
 
 ```json
 {
-  "startUrls": [{ "url": "https://smylelabs.com/products/pixel-torch" }],
-  "maxRequestsPerCrawl": 10,
-  "maxItems": 0,
-  "maxTotalRequests": 100,
+  "startUrls": [{ "url": "https://smylelabs.com/" }],
+  "maxRequestsPerCrawl": 1,
+  "maxItems": 3,
+  "maxTotalRequests": 20,
   "maxSitemapPages": 20,
-  "maxConcurrency": 10,
-  "maxRequestRetries": 3,
+  "maxConcurrency": 1,
+  "maxRequestRetries": 0,
   "proxyConfig": { "useApifyProxy": true },
   "checkForBanner": true,
   "fetchHtml": false,
@@ -35,12 +35,12 @@ An omitted input or `{}` uses the maintained example. An explicitly cleared `sta
 
 | Input | Default | Meaning |
 | --- | --- | --- |
-| `maxRequestsPerCrawl` | 10 | Global successfully processed product cap; one product may produce many variant rows. 0 removes this cap. |
-| `maxItems` | 0 | Global dataset row cap; 0 removes this cap. May truncate the final product's variants. |
-| `maxTotalRequests` | 100 | All HTTP attempts, including robots, sitemaps, currency, HTML, redirects and retries. Always bounded. |
+| `maxRequestsPerCrawl` | 1 | Global successfully processed product cap; one product may produce many variant rows. 0 removes this cap. |
+| `maxItems` | 3 | Global dataset row cap; 0 removes this cap. May truncate the final product's variants. |
+| `maxTotalRequests` | 20 | All HTTP attempts, including robots, sitemaps, currency, HTML, redirects and retries. Always bounded. |
 | `maxSitemapPages` | 20 | Independent sitemap document budget. |
-| `maxConcurrency` | 10 | Concurrent product fetches; discovery is sequential. |
-| `maxRequestRetries` | 3 | Retries for transport failures, 429 and 5xx; exponential backoff up to 4 seconds. Permanent 4xx responses are not retried. |
+| `maxConcurrency` | 1 | Concurrent product fetches; discovery is sequential. |
+| `maxRequestRetries` | 0 | Retries for transport failures, 429 and 5xx; exponential backoff up to 4 seconds. Permanent 4xx responses are not retried. |
 | `checkForBanner` | true | Require a Shopify marker in robots.txt for root discovery. Does not apply to a direct product URL. |
 | `fetchHtml` | false | Extra static HTML request exposing Cheerio `context.$` to hooks. No rendered browser. |
 

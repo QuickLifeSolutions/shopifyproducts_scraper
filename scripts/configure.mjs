@@ -6,7 +6,7 @@ for (const [key, value] of Object.entries(DEFAULTS)) {
     schema.properties[key] ??= { title: key, type: typeof value === 'number' ? 'integer' : 'object', editor: typeof value === 'number' ? 'number' : 'json', description: key };
     schema.properties[key].default = value; schema.properties[key].prefill = value;
 }
-schema.properties.startUrls.description = 'Public Shopify store roots or direct product URLs. Collection filtering and remote URL-list imports are not supported. The bounded example targets one public product; store roots discover product sitemaps.';
+schema.properties.startUrls.description = 'Public Shopify store roots or direct product URLs. Collection filtering and remote URL-list imports are not supported. The bounded example discovers one product and saves at most three variant rows from the original example store.';
 schema.properties.startUrls.minItems = 1; schema.properties.startUrls.maxItems = 100;
 schema.properties.maxRequestsPerCrawl.title = 'Maximum products';
 schema.properties.maxRequestsPerCrawl.description = 'Global product limit, across all stores. One product can emit multiple variant rows. Zero removes the product cap; request and sitemap budgets still apply.';

@@ -24,7 +24,7 @@ function fixture(overrides={}) {
 }
 async function run(options={},extra={}) {
     const rows=[];const calls=[];const snapshots=[];const routes=fixture(extra.routes);
-    const input=normalizeInput({startUrls:[{url:root}],...options});
+    const input=normalizeInput({startUrls:[{url:root}],maxRequestsPerCrawl:10,maxItems:0,maxTotalRequests:100,maxConcurrency:10,maxRequestRetries:3,...options});
     const io={get:async(url,opts)=>{calls.push(url);if(extra.get)return extra.get(url,opts,routes);assert(routes[url],`Missing fixture ${url}`);return routes[url];},push:async(row)=>{rows.push(row);},save:async(state)=>{snapshots.push(state);},...extra.io};
     const summary=await scrape(input,io);return {summary,rows,calls,snapshots,input};
 }
@@ -61,7 +61,7 @@ test('unsafe input, DNS, and redirect targets rejected before network access',as
     const r=await run({}, {routes:{[`${root}robots.txt`]:response('',302,{location:'http://127.0.0.1/'})}});assert.equal(r.summary.status,'FAILED');assert.equal(r.calls.length,1);
 });
 test('omitted input uses aligned defaults, cleared list and invalid limits fail',()=>{
-    assert.equal(normalizeInput({}).maxRequestsPerCrawl,10);for(const bad of [{startUrls:[]},{maxItems:-1},{maxTotalRequests:0},{maxConcurrency:1.5},{urls:[]}])assert.throws(()=>normalizeInput(bad));
+    assert.equal(normalizeInput({}).maxRequestsPerCrawl,1);for(const bad of [{startUrls:[]},{maxItems:-1},{maxTotalRequests:0},{maxConcurrency:1.5},{urls:[]}])assert.throws(()=>normalizeInput(bad));
 });
 test('missing optional fields, safe IDs, unavailable status, and zero/false survive mapping',()=>{
     const rows=productRows({id:'gid://shopify/Product/9007199254740993',title:'x',variants:[{id:'9007199254740994',price:0,requires_shipping:false}]},root,null);assert.equal(rows[0].id,'9007199254740993');assert.equal(rows[0].availability,'unknown');assert.equal(rows[0].additional.requires_shipping,false);assert.deepEqual(rows[0].images_urls,[]);

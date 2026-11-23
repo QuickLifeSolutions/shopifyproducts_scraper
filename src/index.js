@@ -3,7 +3,7 @@ import { download, publicUrl } from './fns.js';
 import { scrape } from './scraper.js';
 export { scrape } from './scraper.js';
 
-export const DEFAULTS = { startUrls: [{ url: 'https://smylelabs.com/products/pixel-torch' }], maxRequestsPerCrawl: 10, maxItems: 0, maxTotalRequests: 100, maxSitemapPages: 20, maxConcurrency: 10, maxRequestRetries: 3, proxyConfig: { useApifyProxy: true }, checkForBanner: true, fetchHtml: false, debugLog: false, customData: {}, extendOutputFunction: 'async ({ item }) => item', extendScraperFunction: 'async () => {}' };
+export const DEFAULTS = { startUrls: [{ url: 'https://smylelabs.com/' }], maxRequestsPerCrawl: 1, maxItems: 3, maxTotalRequests: 20, maxSitemapPages: 20, maxConcurrency: 1, maxRequestRetries: 0, proxyConfig: { useApifyProxy: true }, checkForBanner: true, fetchHtml: false, debugLog: false, customData: {}, extendOutputFunction: 'async ({ item }) => item', extendScraperFunction: 'async () => {}' };
 export function normalizeInput(raw = {}) {
     if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Input must be an object');
     for (const key of ['urls', 'waitForSelector', 'useProxy']) if (key in raw) throw new Error(`Unsupported input ${key}; use startUrls/proxyConfig; JavaScript rendering is not supported`);
